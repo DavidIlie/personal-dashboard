@@ -1,28 +1,31 @@
 {
-  "name": "with-tailwindcss",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "date-fns": "^2.22.1",
-    "dateformat": "^4.5.1",
-    "moment": "^2.29.1",
-    "next": "latest",
-    "next-seo": "^4.26.0",
-    "react": "^17.0.2",
-    "react-awesome-reveal": "^3.8.1",
-    "react-dom": "^17.0.2",
-    "react-modal": "^3.14.3",
-    "react-query": "^3.18.1",
-    "react-toastify": "^7.0.4"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.2.6",
-    "postcss": "^8.3.5",
-    "tailwindcss": "^2.2.4"
-  }
+    "name": "with-tailwindcss",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "format": "prettier --ignore-path .gitignore \"src/**/*.+(js|tsx)\" --write"
+    },
+    "dependencies": {
+        "@tippyjs/react": "^4.2.5",
+        "date-fns": "^2.22.1",
+        "dateformat": "^4.5.1",
+        "moment": "^2.29.1",
+        "next": "latest",
+        "next-seo": "^4.26.0",
+        "react": "^17.0.2",
+        "react-awesome-reveal": "^3.8.1",
+        "react-dom": "^17.0.2",
+        "react-icons": "^4.2.0",
+        "react-modal": "^3.14.3",
+        "react-query": "^3.18.1",
+        "react-toastify": "^7.0.4"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.2.6",
+        "postcss": "^8.3.5",
+        "tailwindcss": "^2.2.4"
+    }
 }

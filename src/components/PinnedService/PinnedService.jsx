@@ -1,21 +1,49 @@
+import { useState } from "react";
+import { FaLock } from "react-icons/fa";
+import Image from "next/image";
+
+import Tooltip from "@ui/Tooltip";
+
 export const PinnedService = ({ name, type, url, image, authelia }) => {
-    console.log(name, url, image, authelia);
+    const [color, setColor] = useState("#212622");
+
     // offline: #dc3545
     // online: #28a745
+    // pending: #212622
+
     return (
-        <div
-            className="bg-gray-800  rounded-xl p-4 overflow-auto hoverItem duration-200"
+        <a
+            href={url}
+            target="_blank"
+            className="bg-gray-800 rounded-xl p-4 overflow-hidden shadow-xl flex hoverItem duration-200 items-center gap-4"
             style={{
-                width: "450px",
-                height: "75px",
-                borderLeft: "10px solid #28a745",
+                width: "400px",
+                height: "80px",
+                borderLeft: `10px solid ${color}`,
             }}
         >
-            <div>
-                <h1>
-                    {name} <span className="text-gray-500">- {type}</span>
-                </h1>
+            <div className="mt-2">
+                <Image src={image} width="50%" height="50%" />
             </div>
-        </div>
+            <div className="w-full">
+                {authelia && (
+                    <div className="float-right mr-5 mt-4">
+                        <Tooltip content="This is page is protected by Authelia.">
+                            <div>
+                                <FaLock />
+                            </div>
+                        </Tooltip>
+                    </div>
+                )}
+                <div>
+                    <h1>
+                        {name} <span className="text-gray-500">- {type}</span>
+                    </h1>
+                    <p className="text-gray-400 truncate">
+                        {url.split("https://").pop()}
+                    </p>
+                </div>
+            </div>
+        </a>
     );
 };

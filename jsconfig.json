@@ -6,7 +6,8 @@
             "@lib/*": ["lib/*"],
             "@components/*": ["components/*"],
             "@ui/*": ["ui/*"],
-            "@styles/*": ["styles/*"]
+            "@styles/*": ["styles/*"],
+            "@data/*": ["data/*"]
         }
     }
 }

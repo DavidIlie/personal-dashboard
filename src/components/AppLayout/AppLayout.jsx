@@ -49,7 +49,7 @@ export const AppLayout = ({ children }) => {
                 />
             </UpDown>
             <div
-                className="h-screen text-white"
+                className="text-white"
                 style={{ background: "rgba(26, 33, 42, 0.8)" }}
             >
                 {children}

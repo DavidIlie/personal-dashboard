@@ -8,6 +8,8 @@ import ReactModal from "react-modal";
 
 import "tailwindcss/tailwind.css";
 import "@styles/global.css";
+import "tippy.js/dist/tippy.css";
+import "tippy.js/animations/shift-away.css";
 import "react-toastify/dist/ReactToastify.css";
 
 ReactModal.setAppElement("#__next");
