@@ -1,0 +1,107 @@
+body {
+    position: relative;
+}
+
+.gradient-text {
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(rgb(43, 172, 144), rgb(0, 102, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hoverItem:hover {
+    transform: translateY(-4px);
+}
+
+.loading-loader {
+    border-radius: 50%;
+    position: relative;
+    margin: 50px;
+    display: inline-block;
+    height: 0;
+    width: 0;
+}
+
+.loading-loader span {
+    position: absolute;
+    display: block;
+    background-color: #0b9496;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    top: -20px;
+    perspective: 100000px;
+}
+.loading-loader span:nth-child(1) {
+    left: 60px;
+    animation: bounce2 1s cubic-bezier(0.04, 0.35, 0, 1) infinite;
+    animation-delay: 0s;
+}
+.loading-loader span:nth-child(2) {
+    left: 20px;
+    animation: bounce2 1s cubic-bezier(0.04, 0.35, 0, 1) infinite;
+    animation-delay: 0.2s;
+}
+.loading-loader span:nth-child(3) {
+    left: -20px;
+    animation: bounce2 1s cubic-bezier(0.04, 0.35, 0, 1) infinite;
+    animation-delay: 0.4s;
+}
+.loading-loader span:nth-child(4) {
+    left: -60px;
+    animation: bounce2 1s cubic-bezier(0.04, 0.35, 0, 1) infinite;
+    animation-delay: 0.6s;
+}
+
+@keyframes bounce2 {
+    0%,
+    75%,
+    100% {
+        transform: translateY(0px);
+    }
+    25% {
+        transform: translateY(-30px);
+    }
+}
+
+@keyframes UpDown {
+    from {
+        transform: rotate(0deg) translateY(0);
+    }
+    to {
+        transform: rotate(20deg) translateY(50px);
+    }
+}
+@keyframes UpDownWide {
+    from {
+        transform: rotate(0deg) translateY(0);
+    }
+    to {
+        transform: rotate(12deg) translateY(300px);
+    }
+}
+
+.UpDownAnimation > svg {
+    animation-name: UpDown;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+.UpDownSlowAnimation > svg {
+    animation-name: UpDown;
+    animation-duration: 11s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+.UpDownWideAnimation > svg {
+    animation-name: UpDownWide;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
