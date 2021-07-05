@@ -11,11 +11,11 @@ export const Article = ({
 }) => {
     return (
         <a
-            className="px-4 max-w-md hoverItem duration-200"
+            className="px-4 xl:max-w-sm max-w-md hoverItem duration-200"
             href={url}
             target="_blank"
         >
-            <div className="bg-gray-800 shadow-2xl rounded-lg mb-6 tracking-wide">
+            <div className="bg-gray-800 border-2 border-gray-700 shadow-2xl rounded-lg mb-6 tracking-wide">
                 <div className="md:flex-shrink-0">
                     <Image
                         src={urlToImage}
