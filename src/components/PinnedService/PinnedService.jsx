@@ -15,7 +15,7 @@ export const PinnedService = ({ name, type, url, image, authelia }) => {
         <a
             href={url}
             target="_blank"
-            className="bg-gray-800 border-2 border-gray-700 rounded-xl p-4 overflow-hidden shadow-xl flex hoverItem duration-200 items-center gap-4"
+            className="mb-5 bg-gray-800 border-2 border-gray-700 rounded-xl p-4 overflow-hidden shadow-xl flex hoverItem duration-200 items-center gap-4"
             style={{
                 width: "400px",
                 height: "80px",
@@ -23,10 +23,15 @@ export const PinnedService = ({ name, type, url, image, authelia }) => {
             }}
         >
             <div className="mt-2">
-                <Image src={image} width="50%" height="50%" blurDataURL={
-                    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
-                }
-                    placeholder="blur" />
+                <Image
+                    src={image}
+                    width="50%"
+                    height="50%"
+                    blurDataURL={
+                        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
+                    }
+                    placeholder="blur"
+                />
             </div>
             <div className="w-full">
                 {authelia && (

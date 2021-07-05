@@ -2,6 +2,15 @@ body {
     position: relative;
 }
 
+.truncate-2-lines {
+    max-height: 3.6em;
+    line-height: 1.8em;
+    display: block;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
 .gradient-text {
     background-clip: text;
     -webkit-text-fill-color: transparent;
