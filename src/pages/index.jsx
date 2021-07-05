@@ -13,7 +13,7 @@ export default function Home() {
         <>
             <NextSeo title="Home" />
             <div class="h-screen">
-                <div className="2xl:px-32 xl:px-32 md:px-16 2xl:pt-24 xl:pt-24 md:pt-16 px-6 pt-6">
+                <div className="2xl:px-72 xl:px-32 md:px-16 2xl:pt-24 xl:pt-24 md:pt-16 px-6 pt-6">
                     <Fade delay={500} direction="down" triggerOnce>
                         <p className="ml-1 font-semibold text-xl gradient-text">
                             {dateFormat(now, "dddd, dS mmmm yyyy, h:MM TT")}
@@ -25,13 +25,13 @@ export default function Home() {
                             <span className="gradient-text">David!</span>
                         </h1>
                     </Fade>
-                </div>
-                <div className="mt-10 flex flex-wrap justify-center items-center gap-6">
-                    <Fade delay={1000} direction="up" triggerOnce>
-                        {pinnedPages.map((pin, index) => (
-                            <PinnedService key={index} {...pin} />
-                        ))}
-                    </Fade>
+                    <div className="mt-10 flex flex-wrap justify-center items-center gap-6">
+                        <Fade delay={1000} direction="up" triggerOnce>
+                            {pinnedPages.map((pin, index) => (
+                                <PinnedService key={index} {...pin} />
+                            ))}
+                        </Fade>
+                    </div>
                 </div>
             </div>
         </>
