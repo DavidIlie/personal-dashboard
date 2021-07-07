@@ -14,7 +14,6 @@ export const PinnedService = ({ name, type, url, image, authelia }) => {
     return (
         <a
             href={url}
-            target="_blank"
             className="mb-2 bg-gray-800 border-2 border-gray-700 rounded-xl p-4 overflow-hidden shadow-xl flex hoverItem duration-200 items-center gap-4"
             style={{
                 width: "400px",
