@@ -4,7 +4,21 @@ import Image from "next/image";
 
 import Tooltip from "@ui/Tooltip";
 
-export const PinnedService = ({ name, type, url, image, authelia }) => {
+interface PinnedServiceProps {
+    name: string;
+    type: string;
+    url: string;
+    image: string;
+    authelia: boolean;
+}
+
+export const PinnedService = ({
+    name,
+    type,
+    url,
+    image,
+    authelia,
+}: PinnedServiceProps): JSX.Element => {
     const [color, setColor] = useState("#212622");
 
     // offline: #dc3545

@@ -1,3 +1,4 @@
+import { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import Loader from "@components/Loader";
@@ -15,9 +16,13 @@ import "react-toastify/dist/ReactToastify.css";
 ReactModal.setAppElement("#__next");
 
 const queryClient = new QueryClient();
-function PersonalDashboard({ Component, pageProps, router }) {
+export default function PersonalDashboard({
+    Component,
+    pageProps,
+    router,
+}: AppProps): React.ReactElement {
     const [loading, setLoading] = useState(false);
-    useEffect(async () => {
+    useEffect(() => {
         document.documentElement.lang = `en-US`;
         const start = () => {
             setLoading(true);
@@ -61,5 +66,3 @@ function PersonalDashboard({ Component, pageProps, router }) {
         </>
     );
 }
-
-export default PersonalDashboard;

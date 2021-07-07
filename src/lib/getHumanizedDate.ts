@@ -1,5 +1,4 @@
 import moment from "moment";
-
 export function getHumanizedDate() {
   const hour = moment().hour();
 

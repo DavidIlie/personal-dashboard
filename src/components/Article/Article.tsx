@@ -1,6 +1,17 @@
 import { formatDistance } from "date-fns";
 import Image from "next/image";
 
+interface ArticleProps {
+    description: string;
+    publishedAt: Date;
+    title: string;
+    url: string;
+    urlToImage: string;
+    source: {
+        name: string;
+    };
+}
+
 export const Article = ({
     description,
     publishedAt,
@@ -8,7 +19,7 @@ export const Article = ({
     url,
     urlToImage,
     source,
-}) => {
+}: ArticleProps): JSX.Element => {
     return (
         <a
             className="px-4 xl:max-w-sm max-w-md hoverItem duration-200"

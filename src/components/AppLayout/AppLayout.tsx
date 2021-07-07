@@ -1,7 +1,11 @@
 import { UpDown } from "@components/Animations/Animation";
 import SVG from "@components/SVG";
 
-export const AppLayout = ({ children }) => {
+interface AppLayoutProps {
+    children: React.ReactElement;
+}
+
+export const AppLayout = ({ children }: AppLayoutProps): JSX.Element => {
     return (
         <>
             <UpDown type="normal">

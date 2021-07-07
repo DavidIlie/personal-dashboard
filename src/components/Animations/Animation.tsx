@@ -1,4 +1,12 @@
-export const UpDown = ({ children, type }) => {
+import React from "react";
+
+interface UpDownProps {
+    children: React.ReactNode;
+
+    type: "normal" | "wide" | "slow";
+}
+
+export const UpDown = ({ children, type }: UpDownProps): JSX.Element => {
     return (
         <div
             className={`${

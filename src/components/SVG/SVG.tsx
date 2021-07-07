@@ -35,6 +35,19 @@ const icons = {
     },
 };
 
+type IconType = "triangle" | "circle" | "hexa" | "box";
+
+type SVGProps = {
+    stroke?: boolean;
+    color?: string | number | any;
+    width: number;
+    icon: IconType;
+    zIndex?: number;
+    left: string;
+    top: string;
+    hiddenMobile?: boolean;
+};
+
 export const SVG = ({
     stroke = false,
     color = `${
@@ -45,8 +58,7 @@ export const SVG = ({
     icon,
     left,
     top,
-    hiddenMobile = false,
-}) => (
+}: SVGProps): JSX.Element => (
     <svg
         fill={stroke ? `none` : `currentColor`}
         className={`absolute fill-current text-${color}`}
@@ -56,7 +68,6 @@ export const SVG = ({
             left: left,
             top: top,
             zIndex,
-            display: hiddenMobile ? { base: `none`, md: `block` } : `block`,
         }}
         viewBox={icons[icon].viewBox}
     >
