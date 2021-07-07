@@ -37,7 +37,7 @@ const Home = ({ articles, weather }) => {
                     </h1>
                 </Fade>
                 <Fade delay={750} direction="up" triggerOnce>
-                    <p className="ml-1 font-semibold text-xl">
+                    <p className="ml-1 mt-2 font-semibold text-xl">
                         <span className="gradient-text">
                             {capitalizeTheFirstLetterOfEachWord(
                                 weather.weather[0].description
