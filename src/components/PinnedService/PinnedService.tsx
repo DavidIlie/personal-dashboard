@@ -49,7 +49,10 @@ export const PinnedService = ({
             <div className="w-full">
                 {authelia && (
                     <div className="float-right mr-5 mt-4">
-                        <Tooltip content="This is page is protected by Authelia.">
+                        <Tooltip
+                            content="This is page is protected by Authelia."
+                            animation="shift-away"
+                        >
                             <div>
                                 <FaLock />
                             </div>

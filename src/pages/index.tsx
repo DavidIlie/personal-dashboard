@@ -8,7 +8,33 @@ import Article from "@components/Article";
 
 import { pinnedPages } from "@data/pinnedPages";
 
-const Home = ({ articles, weather }) => {
+interface HomeProps {
+    articles: [
+        {
+            description: string;
+            publishedAt: Date;
+            title: string;
+            url: string;
+            urlToImage: string;
+            source: {
+                name: string;
+            };
+        }
+    ];
+    weather: {
+        weather: [
+            {
+                description: string;
+            }
+        ];
+        main: {
+            temp: number;
+            feels_like: number;
+        };
+    };
+}
+
+const Home = ({ articles, weather }: HomeProps): JSX.Element => {
     var now = new Date();
 
     function capitalizeTheFirstLetterOfEachWord(words) {
@@ -82,7 +108,15 @@ const Home = ({ articles, weather }) => {
                             )
                             .reverse()
                             .map((article, index) => (
-                                <Article key={index} {...article} />
+                                <Article
+                                    key={index}
+                                    description={article.description}
+                                    publishedAt={article.publishedAt}
+                                    title={article.title}
+                                    url={article.url}
+                                    urlToImage={article.urlToImage}
+                                    source={article.source}
+                                />
                             ))}
                     </div>
                 </Fade>
