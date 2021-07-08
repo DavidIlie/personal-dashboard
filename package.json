@@ -1,5 +1,5 @@
 {
-    "name": "with-tailwindcss",
+    "name": "personal-dashboard",
     "version": "0.1.0",
     "private": true,
     "scripts": {
@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "@tippyjs/react": "^4.2.5",
+        "@types/dateformat": "^3.0.1",
         "date-fns": "^2.22.1",
         "dateformat": "^4.5.1",
         "moment": "^2.29.1",
