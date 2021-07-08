@@ -1,6 +1,6 @@
 # Personal Dashboard
 
-Currently, this is a personal dashboard tailored to **my** needs. The page is created using NextJS and TailwindCSS and Typescript.
+Currently, this is a personal dashboard tailored to **my** needs. The page is created using NextJS, TailwindCSS and Typescript.
 
 In the future I plan to make this customizable with an external database so that anyone can host this on their infastructure.
 
