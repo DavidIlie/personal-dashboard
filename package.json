@@ -6,7 +6,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "format": "prettier --ignore-path .gitignore \"src/**/*.+(js|tsx)\" --write"
+        "format": "prettier --ignore-path --tab-width 4 .gitignore \"src/**/*.+(js|tsx)\" --write"
     },
     "dependencies": {
         "@tippyjs/react": "^4.2.5",
