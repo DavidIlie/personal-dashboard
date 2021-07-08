@@ -13,4 +13,4 @@ Things that I want to be implemented:
 
 ## Showcase
 
-<center><img src="https://user-images.githubusercontent.com/47594764/124882354-94f1d380-dfd0-11eb-9783-8d709b5e5d62.gif"></center>
+<img src="https://user-images.githubusercontent.com/47594764/124882354-94f1d380-dfd0-11eb-9783-8d709b5e5d62.gif">
