@@ -38,7 +38,7 @@ export const PinnedService = ({
             <div className="mt-2">
                 <Image
                     src={image}
-                    width="50%"
+                    width={name === "Plausible" ? "40%" : "50%"}
                     height="50%"
                     blurDataURL={
                         "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="

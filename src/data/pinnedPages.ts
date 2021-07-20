@@ -64,10 +64,10 @@ export const pinnedPages: PinnedPageProps[] = [
         authelia: true,
     },
     {
-        name: "GitLab",
-        type: "Repository Manager",
-        url: "https://gitlab.davidapps.dev",
-        image: "https://user-images.githubusercontent.com/47594764/124396506-4d3a2600-dd0a-11eb-9d4a-757811af0317.png",
+        name: "Plausible",
+        type: "Web Analytics",
+        url: "https://stats.davidilie.com",
+        image: "https://user-images.githubusercontent.com/47594764/126315061-09fce13b-275e-42d8-865a-a5f2c519e41f.png",
         authelia: false,
     },
     {
@@ -88,7 +88,7 @@ export const pinnedPages: PinnedPageProps[] = [
         name: "Roundcube",
         type: "Web Mail",
         url: "https://mail.davidilie.com",
-        image: "https://user-images.githubusercontent.com/47594764/124396775-eb7abb80-dd0b-11eb-99be-0f5a6c86696d.png",
+        image: "https://user-images.githubusercontent.com/47594764/126315540-28e4dac8-243f-46f1-b0f8-46ef28fc9e1e.png",
         authelia: false,
     },
 ];
