@@ -15,7 +15,6 @@
         "dateformat": "^4.5.1",
         "moment": "^2.29.1",
         "next": "latest",
-        "next-plausible": "^2.0.0",
         "next-seo": "^4.26.0",
         "react": "^17.0.2",
         "react-awesome-reveal": "^3.8.1",

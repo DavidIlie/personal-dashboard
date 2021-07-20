@@ -4,7 +4,6 @@ import { ToastContainer } from "react-toastify";
 import Loader from "@components/Loader";
 import { DefaultSeo } from "next-seo";
 import { QueryClient, QueryClientProvider } from "react-query";
-import PlausibleProvider from "next-plausible";
 import AppLayout from "@components/AppLayout";
 import ReactModal from "react-modal";
 
@@ -58,20 +57,12 @@ export default function PersonalDashboard({
                 }}
                 description="Personal dashboard for my services running in my home network."
             />
-            <PlausibleProvider
-                domain="dash.davidapps.dev"
-                selfHosted
-                trackOutboundLinks
-                enabled={true}
-                customDomain={"https://stats.davidilie.com"}
-            >
-                <QueryClientProvider client={queryClient}>
-                    <AppLayout>
-                        {loading ? <Loader /> : <Component {...pageProps} />}
-                    </AppLayout>
-                </QueryClientProvider>
-                <ToastContainer autoClose={2500} newestOnTop={true} />
-            </PlausibleProvider>
+            <QueryClientProvider client={queryClient}>
+                <AppLayout>
+                    {loading ? <Loader /> : <Component {...pageProps} />}
+                </AppLayout>
+            </QueryClientProvider>
+            <ToastContainer autoClose={2500} newestOnTop={true} />
         </>
     );
 }

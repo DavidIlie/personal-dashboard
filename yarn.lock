@@ -1632,11 +1632,6 @@ native-url@0.3.4:
   dependencies:
     querystring "^0.2.0"
 
-next-plausible@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/next-plausible/-/next-plausible-2.0.0.tgz#2f5536ef3945c9a516471c2d5eda68887d447d74"
-  integrity sha512-NaLrAK+LsnEyXz31qy9OjhXZlppp0aWUdKmBPgthrWeGPwLo7ojSWgWU2BzbbUOqi0XVoWjaMa3oNVDfVkyC5w==
-
 next-seo@^4.26.0:
   version "4.26.0"
   resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.26.0.tgz"
