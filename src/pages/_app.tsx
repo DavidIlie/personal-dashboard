@@ -63,7 +63,7 @@ export default function PersonalDashboard({
                 selfHosted
                 trackOutboundLinks
                 enabled={true}
-                customDomain={"https://dash.davidapps.dev"}
+                customDomain={"https://stats.davidilie.com"}
             >
                 <QueryClientProvider client={queryClient}>
                     <AppLayout>
