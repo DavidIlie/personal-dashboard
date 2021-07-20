@@ -14,12 +14,11 @@ jobs:
             - name: Publish to GitLab Container Registry
               uses: elgohr/Publish-Docker-Github-Action@master
               with:
-                  name: davidilie/images
+                  name: davidilie/personal-dashboard
                   registry: registry.davidapps.dev
                   username: DavidIlie
                   password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
                   dockerfile: Dockerfile
-                  tags: personal-dashboard
     deploy:
         if: "!contains(github.event.head_commit.message, 'skip ci')"
         needs: build

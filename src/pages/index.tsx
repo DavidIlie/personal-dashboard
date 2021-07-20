@@ -37,7 +37,7 @@ interface HomeProps {
 const Home = ({ articles, weather }: HomeProps): JSX.Element => {
     var now = new Date();
 
-    function capitalizeTheFirstLetterOfEachWord(words) {
+    function capitalizeTheFirstLetterOfEachWord(words: string) {
         var separateWord = words.toLowerCase().split(" ");
         for (var i = 0; i < separateWord.length; i++) {
             separateWord[i] =
