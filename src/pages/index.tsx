@@ -50,7 +50,7 @@ const Home = ({ articles, weather }: HomeProps): JSX.Element => {
     return (
         <>
             <NextSeo title="Home" />
-            <div className="3xl:px-48 2xl:px-32 xl:px-24 md:px-16 3xl:pt-24 2xl:pt-18 xl:pt-16 md:pt-16 px-6 pt-6">
+            <div className="3xl:px-72 2xl:px-32 xl:px-24 md:px-16 3xl:pt-24 2xl:pt-18 xl:pt-16 md:pt-16 px-6 pt-6">
                 <Fade delay={500} direction="down" triggerOnce>
                     <p className="ml-1 font-semibold text-xl gradient-text">
                         {dateFormat(now, "dddd, dS mmmm yyyy, h:MM TT")}
@@ -85,12 +85,14 @@ const Home = ({ articles, weather }: HomeProps): JSX.Element => {
                         Saved <span className="gradient-text">pages</span>:
                     </h1>
                 </Fade>
-                <div className="mt-10 mb-5 flex flex-wrap justify-center items-center gap-6">
-                    <Fade delay={1000} direction="up" triggerOnce>
-                        {pinnedPages.map((pin, index) => (
-                            <PinnedService key={index} {...pin} />
-                        ))}
-                    </Fade>
+                <div className="flex justify-center">
+                    <div className="mt-10 mb-5 grid 2xl:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-6">
+                        <Fade delay={1000} direction="up" triggerOnce>
+                            {pinnedPages.map((pin, index) => (
+                                <PinnedService key={index} {...pin} />
+                            ))}
+                        </Fade>
+                    </div>
                 </div>
                 <Fade delay={1250} direction="left" triggerOnce>
                     <h1 className="2xl:text-4xl xl:text-4xl text-3xl font-semibold">

@@ -28,9 +28,8 @@ export const PinnedService = ({
     return (
         <a
             href={url}
-            className="mb-2 bg-gray-800 border-2 border-gray-700 rounded-xl p-4 overflow-hidden shadow-xl flex hoverItem duration-200 items-center gap-4"
+            className="mb-2 bg-gray-800 border-2 border-gray-700 rounded-xl p-4 overflow-hidden shadow-xl flex hoverItem duration-200 items-center gap-4 max-w-xl"
             style={{
-                width: "400px",
                 height: "80px",
                 borderLeft: `10px solid ${color}`,
             }}
