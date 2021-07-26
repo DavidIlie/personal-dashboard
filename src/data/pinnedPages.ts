@@ -50,13 +50,6 @@ export const pinnedPages: PinnedPageProps[] = [
         authelia: false,
     },
     {
-        name: "Grafana",
-        type: "Kubernetes Monitoring",
-        url: "https://monitoring.davidapps.dev",
-        image: "https://user-images.githubusercontent.com/47594764/124396567-9ee2b080-dd0a-11eb-843a-54967d20d28b.png",
-        authelia: true,
-    },
-    {
         name: "Longhorn",
         type: "Volume Management",
         url: "https://longhorn.davidapps.dev",
@@ -69,6 +62,13 @@ export const pinnedPages: PinnedPageProps[] = [
         url: "https://stats.davidilie.com",
         image: "https://user-images.githubusercontent.com/47594764/126315061-09fce13b-275e-42d8-865a-a5f2c519e41f.png",
         authelia: false,
+    },
+    {
+        name: "motionEye",
+        type: "Home Cameras",
+        url: "https://cameras.davidapps.dev",
+        image: "https://user-images.githubusercontent.com/47594764/126952940-011d641d-88ef-4f67-893c-a947f6ac2c1c.png",
+        authelia: true,
     },
     {
         name: "Plex",
