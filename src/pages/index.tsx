@@ -50,7 +50,7 @@ const Home = ({ articles, weather }: HomeProps): JSX.Element => {
     return (
         <>
             <NextSeo title="Home" />
-            <div className="2xl:px-72 xl:px-24 md:px-16 2xl:pt-24 xl:pt-16 md:pt-16 px-6 pt-6">
+            <div className="3xl:px-48 2xl:px-32 xl:px-24 md:px-16 3xl:pt-24 2xl:pt-18 xl:pt-16 md:pt-16 px-6 pt-6">
                 <Fade delay={500} direction="down" triggerOnce>
                     <p className="ml-1 font-semibold text-xl gradient-text">
                         {dateFormat(now, "dddd, dS mmmm yyyy, h:MM TT")}
