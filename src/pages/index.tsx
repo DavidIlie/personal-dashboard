@@ -1,12 +1,15 @@
-import { getHumanizedDate } from "@lib/getHumanizedDate";
+import { useState } from "react";
+import { useQuery } from "react-query";
 import dateFormat from "dateformat";
 import { NextSeo } from "next-seo";
 import { Fade } from "react-awesome-reveal";
 
 import PinnedService from "@components/PinnedService";
 import Article from "@components/Article";
+import Tooltip from "@ui/Tooltip";
 
 import { pinnedPages } from "@data/pinnedPages";
+import { getHumanizedDate } from "@lib/getHumanizedDate";
 
 interface HomeProps {
     articles: [
@@ -21,20 +24,27 @@ interface HomeProps {
             };
         }
     ];
-    weather: {
-        weather: [
-            {
-                description: string;
-            }
-        ];
-        main: {
-            temp: number;
-            feels_like: number;
-        };
+    weather_api_key: string;
+    ip_locator_key: string;
+}
+
+interface weatherProps {
+    weather: [
+        {
+            description: string;
+        }
+    ];
+    main: {
+        temp: number;
+        feels_like: number;
     };
 }
 
-const Home = ({ articles, weather }: HomeProps): JSX.Element => {
+const Home = ({
+    articles,
+    weather_api_key,
+    ip_locator_key,
+}: HomeProps): JSX.Element => {
     var now = new Date();
 
     function capitalizeTheFirstLetterOfEachWord(words: string) {
@@ -46,6 +56,48 @@ const Home = ({ articles, weather }: HomeProps): JSX.Element => {
         }
         return separateWord.join(" ");
     }
+
+    const [weather, setWeather] = useState<weatherProps>({
+        weather: [
+            {
+                description: "pending",
+            },
+        ],
+        main: {
+            temp: 0,
+            feels_like: 0,
+        },
+    });
+
+    const twentyFourHoursInMs = 1000 * 60 * 60 * 24;
+
+    const { isLoading, data } = useQuery(
+        `getLocation`,
+        async () => {
+            const ipReq = await fetch(
+                `https://api.ipregistry.co/?key=${ip_locator_key}`
+            );
+            const response = await ipReq.json();
+
+            if (response.location !== undefined) {
+                const weatherRequest = await fetch(
+                    `https://api.openweathermap.org/data/2.5/weather?q=${response.location.city}&appid=${weather_api_key}`
+                );
+                const { weather, main } = await weatherRequest.json();
+                setWeather({ weather, main });
+                return {
+                    city: response.location.city,
+                    region: response.location.region.name,
+                };
+            }
+        },
+        {
+            refetchOnWindowFocus: false,
+            refetchOnReconnect: false,
+            retry: false,
+            staleTime: twentyFourHoursInMs,
+        }
+    );
 
     return (
         <>
@@ -64,20 +116,35 @@ const Home = ({ articles, weather }: HomeProps): JSX.Element => {
                 </Fade>
                 <Fade delay={750} direction="up" triggerOnce>
                     <p className="ml-1 mt-2 font-semibold text-xl">
-                        <span className="gradient-text">
-                            {capitalizeTheFirstLetterOfEachWord(
-                                weather.weather[0].description
-                            )}
-                        </span>
-                        ,{" "}
-                        <span className="gradient-text">
-                            {Math.trunc(weather.main.temp - 273.15)}
-                        </span>{" "}
-                        degrees, but feels like{" "}
-                        <span className="gradient-text">
-                            {Math.trunc(weather.main.feels_like - 273.15)}{" "}
-                        </span>
-                        degrees
+                        {!isLoading && (
+                            <>
+                                {" "}
+                                <span className="gradient-text">
+                                    {capitalizeTheFirstLetterOfEachWord(
+                                        weather.weather[0].description
+                                    )}
+                                </span>
+                                ,{" "}
+                                <span className="gradient-text">
+                                    {Math.trunc(weather.main.temp - 273.15)}
+                                </span>{" "}
+                                degrees, but feels like{" "}
+                                <span className="gradient-text">
+                                    {Math.trunc(
+                                        weather.main.feels_like - 273.15
+                                    )}{" "}
+                                </span>
+                                degrees in{" "}
+                                <Tooltip
+                                    content={data.region}
+                                    animation="shift-away"
+                                >
+                                    <span className="gradient-text cursor-pointer">
+                                        {data.city}
+                                    </span>
+                                </Tooltip>
+                            </>
+                        )}
                     </p>
                 </Fade>
                 <Fade delay={750} direction="left" triggerOnce>
@@ -133,12 +200,13 @@ export async function getServerSideProps() {
     );
     const { articles } = await postRequest.json();
 
-    const weatherRequest = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=Alicante&appid=${process.env.WEATHER_API_KEY}`
-    );
-    const { weather, main } = await weatherRequest.json();
-
-    return { props: { articles: articles, weather: { weather, main } } };
+    return {
+        props: {
+            articles: articles,
+            weather_api_key: process.env.WEATHER_API_KEY,
+            ip_locator_key: process.env.IP_LOCATOR_KEY,
+        },
+    };
 }
 
 export default Home;
