@@ -116,25 +116,23 @@ const Home = ({
                 </Fade>
                 <Fade delay={750} direction="up" triggerOnce>
                     <p className="ml-1 mt-2 font-semibold text-xl">
+                        <span className="gradient-text">
+                            {capitalizeTheFirstLetterOfEachWord(
+                                weather.weather[0].description
+                            )}
+                        </span>
+                        ,{" "}
+                        <span className="gradient-text">
+                            {Math.trunc(weather.main.temp - 273.15)}
+                        </span>{" "}
+                        degrees, but feels like{" "}
+                        <span className="gradient-text">
+                            {Math.trunc(weather.main.feels_like - 273.15)}{" "}
+                        </span>
+                        degrees in{" "}
                         {!isLoading && (
                             <>
                                 {" "}
-                                <span className="gradient-text">
-                                    {capitalizeTheFirstLetterOfEachWord(
-                                        weather.weather[0].description
-                                    )}
-                                </span>
-                                ,{" "}
-                                <span className="gradient-text">
-                                    {Math.trunc(weather.main.temp - 273.15)}
-                                </span>{" "}
-                                degrees, but feels like{" "}
-                                <span className="gradient-text">
-                                    {Math.trunc(
-                                        weather.main.feels_like - 273.15
-                                    )}{" "}
-                                </span>
-                                degrees in{" "}
                                 <Tooltip
                                     content={data.region}
                                     animation="shift-away"
