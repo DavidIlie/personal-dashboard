@@ -10,6 +10,10 @@ import Tooltip from "@ui/Tooltip";
 
 import { pinnedPages } from "@data/pinnedPages";
 import { getHumanizedDate } from "@lib/getHumanizedDate";
+import weatherQuery from "@lib/weatherQuery";
+import capitalizeTheFirstLetterOfEachWord from "@lib/capitalizeTheFirstLetterOfEachWord";
+
+import { weatherProps, locationProps } from "@interfaces/weather";
 
 interface HomeProps {
     articles: [
@@ -28,34 +32,12 @@ interface HomeProps {
     ip_locator_key: string;
 }
 
-interface weatherProps {
-    weather: [
-        {
-            description: string;
-        }
-    ];
-    main: {
-        temp: number;
-        feels_like: number;
-    };
-}
-
 const Home = ({
     articles,
     weather_api_key,
     ip_locator_key,
 }: HomeProps): JSX.Element => {
     var now = new Date();
-
-    function capitalizeTheFirstLetterOfEachWord(words: string) {
-        var separateWord = words.toLowerCase().split(" ");
-        for (var i = 0; i < separateWord.length; i++) {
-            separateWord[i] =
-                separateWord[i].charAt(0).toUpperCase() +
-                separateWord[i].substring(1);
-        }
-        return separateWord.join(" ");
-    }
 
     const [weather, setWeather] = useState<weatherProps>({
         weather: [
@@ -69,28 +51,22 @@ const Home = ({
         },
     });
 
+    const [location, setLocation] = useState<locationProps>({
+        city: "pending",
+        country: "pending",
+    });
+
     const twentyFourHoursInMs = 1000 * 60 * 60 * 24;
 
     const { isLoading, data } = useQuery(
         `getLocation`,
-        async () => {
-            const ipReq = await fetch(
-                `https://api.ipregistry.co/?key=${ip_locator_key}`
-            );
-            const response = await ipReq.json();
-
-            if (response.location !== undefined) {
-                const weatherRequest = await fetch(
-                    `https://api.openweathermap.org/data/2.5/weather?q=${response.location.city}&appid=${weather_api_key}`
-                );
-                const { weather, main } = await weatherRequest.json();
-                setWeather({ weather, main });
-                return {
-                    city: response.location.city,
-                    region: response.location.region.name,
-                };
-            }
-        },
+        async () =>
+            await weatherQuery(
+                setWeather,
+                setLocation,
+                weather_api_key,
+                ip_locator_key
+            ),
         {
             refetchOnWindowFocus: false,
             refetchOnReconnect: false,
@@ -116,29 +92,34 @@ const Home = ({
                 </Fade>
                 <Fade delay={750} direction="up" triggerOnce>
                     <p className="ml-1 mt-2 font-semibold text-xl">
-                        <span className="gradient-text">
-                            {capitalizeTheFirstLetterOfEachWord(
-                                weather.weather[0].description
-                            )}
-                        </span>
-                        ,{" "}
-                        <span className="gradient-text">
-                            {Math.trunc(weather.main.temp - 273.15)}
-                        </span>{" "}
-                        degrees, but feels like{" "}
-                        <span className="gradient-text">
-                            {Math.trunc(weather.main.feels_like - 273.15)}{" "}
-                        </span>
-                        degrees in{" "}
-                        {!isLoading && (
+                        {location.city === "pending" ? (
+                            <h1 className="gradient-text">
+                                Loading weather data...
+                            </h1>
+                        ) : (
                             <>
-                                {" "}
+                                <span className="gradient-text">
+                                    {capitalizeTheFirstLetterOfEachWord(
+                                        weather.weather[0].description
+                                    )}
+                                </span>
+                                ,{" "}
+                                <span className="gradient-text">
+                                    {Math.trunc(weather.main.temp - 273.15)}
+                                </span>{" "}
+                                degrees, but feels like{" "}
+                                <span className="gradient-text">
+                                    {Math.trunc(
+                                        weather.main.feels_like - 273.15
+                                    )}{" "}
+                                </span>
+                                degrees in{" "}
                                 <Tooltip
-                                    content={data.region}
+                                    content={location.country}
                                     animation="shift-away"
                                 >
                                     <span className="gradient-text cursor-pointer">
-                                        {data.city}
+                                        {location.city}
                                     </span>
                                 </Tooltip>
                             </>
