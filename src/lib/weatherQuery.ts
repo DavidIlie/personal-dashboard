@@ -30,7 +30,7 @@ export default async function weatherQuery(
         }) => {
             if (!error) {
                 const locationReq = await fetch(
-                    `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${weather_api_key}`
+                    `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${weather_api_key}`
                 );
                 const response = await locationReq.json();
 
