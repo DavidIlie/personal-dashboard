@@ -80,7 +80,7 @@ export const pinnedPages: PinnedPageProps[] = [
     {
         name: "Pterodactyl",
         type: "Game Server Manager",
-        url: "https://oldpanel.davidapps.dev",
+        url: "https://panel.davidapps.dev",
         image: "https://user-images.githubusercontent.com/47594764/124396725-8cb54200-dd0b-11eb-95ae-1b991835d330.png",
         authelia: false,
     },
