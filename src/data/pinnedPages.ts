@@ -64,10 +64,10 @@ export const pinnedPages: PinnedPageProps[] = [
         authelia: false,
     },
     {
-        name: "motionEye",
-        type: "Home Cameras",
-        url: "https://cameras.davidapps.dev",
-        image: "https://user-images.githubusercontent.com/47594764/126952940-011d641d-88ef-4f67-893c-a947f6ac2c1c.png",
+        name: "Guacamole",
+        type: "Remote Management",
+        url: "https://guacamole.davidapps.dev",
+        image: "https://user-images.githubusercontent.com/47594764/132096547-ed523491-434d-4182-86b8-ef4e486364b0.png",
         authelia: true,
     },
     {
