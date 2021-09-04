@@ -54,7 +54,7 @@ export const pinnedPages: PinnedPageProps[] = [
         type: "Kubernetes PVCs",
         url: "https://longhorn.davidapps.dev",
         image: "https://user-images.githubusercontent.com/47594764/124396745-c128fe00-dd0b-11eb-95e5-fffae818dbdc.png",
-        authelia: false,
+        authelia: true,
     },
     {
         name: "Plausible",
@@ -68,7 +68,7 @@ export const pinnedPages: PinnedPageProps[] = [
         type: "Remote Gateway",
         url: "https://guacamole.davidapps.dev",
         image: "https://user-images.githubusercontent.com/47594764/132096547-ed523491-434d-4182-86b8-ef4e486364b0.png",
-        authelia: true,
+        authelia: false,
     },
     {
         name: "Plex",
