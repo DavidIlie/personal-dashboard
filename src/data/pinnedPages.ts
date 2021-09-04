@@ -65,7 +65,7 @@ export const pinnedPages: PinnedPageProps[] = [
     },
     {
         name: "Guacamole",
-        type: "Remote Management",
+        type: "Remote Gateway",
         url: "https://guacamole.davidapps.dev",
         image: "https://user-images.githubusercontent.com/47594764/132096547-ed523491-434d-4182-86b8-ef4e486364b0.png",
         authelia: true,
