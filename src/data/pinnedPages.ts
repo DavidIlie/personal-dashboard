@@ -1,6 +1,6 @@
 interface PinnedPageProps {
     name: string;
-    type: string;
+    type?: string;
     url: string;
     image: string;
     authelia: boolean;
@@ -64,10 +64,9 @@ export const pinnedPages: PinnedPageProps[] = [
         authelia: false,
     },
     {
-        name: "Guacamole",
-        type: "Remote Gateway",
-        url: "https://guacamole.davidapps.dev",
-        image: "https://user-images.githubusercontent.com/47594764/132096547-ed523491-434d-4182-86b8-ef4e486364b0.png",
+        name: "David's Upload Server",
+        url: "https://media.davidapps.dev",
+        image: "https://user-images.githubusercontent.com/47594764/135661835-f526f4ee-049a-47ad-887b-8184e7fbb300.png",
         authelia: false,
     },
     {

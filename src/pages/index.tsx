@@ -175,7 +175,7 @@ const Home = ({
 
 export async function getServerSideProps() {
     const postRequest = await fetch(
-        `https://newsapi.org/v2/everything?q=technology&sources=the-verge&sortBy=publishedAt&pageSize=8&apiKey=${process.env.NEWS_API_KEY}`
+        `https://newsapi.org/v2/everything?q=technology&sortBy=publishedAt&pageSize=9&apiKey=${process.env.NEWS_API_KEY}`
     );
     const { articles } = await postRequest.json();
 

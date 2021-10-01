@@ -6,7 +6,7 @@ import Tooltip from "@ui/Tooltip";
 
 interface PinnedServiceProps {
     name: string;
-    type: string;
+    type?: string;
     url: string;
     image: string;
     authelia: boolean;
@@ -60,7 +60,10 @@ export const PinnedService = ({
                 )}
                 <div>
                     <h1>
-                        {name} <span className="text-gray-500">- {type}</span>
+                        {name}
+                        {typeof type === "string" && (
+                            <span className="text-gray-500">- {type}</span>
+                        )}
                     </h1>
                     <p className="text-gray-400 truncate">
                         {url.split("https://").pop()}

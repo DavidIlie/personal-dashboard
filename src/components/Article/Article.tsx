@@ -1,5 +1,6 @@
 import { formatDistance } from "date-fns";
 import Image from "next/image";
+import { shimmer } from "@lib/shimmer";
 
 interface ArticleProps {
     description: string;
@@ -29,14 +30,12 @@ export const Article = ({
             <div className="bg-gray-800 border-2 border-gray-700 shadow-2xl rounded-lg mb-6 tracking-wide">
                 <div className="md:flex-shrink-0">
                     <Image
-                        src={urlToImage}
+                        src={`/api/imageproxy?url=${urlToImage}`}
                         width="500px"
                         height="300px"
-                        blurDataURL={
-                            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
-                        }
-                        placeholder="blur"
                         className="object-cover h-64 w-full rounded-lg rounded-b-none"
+                        placeholder="blur"
+                        blurDataURL={shimmer(1920, 1080)}
                     />
                 </div>
                 <div className="px-4 py-2 -mt-1.5 border-t-4 border-gray-700">
