@@ -52,10 +52,7 @@ export const AppLayout = ({ children }: AppLayoutProps): JSX.Element => {
                     color="gray.100"
                 />
             </UpDown>
-            <div
-                className="text-white"
-                style={{ background: "rgba(26, 33, 42, 0.8)" }}
-            >
+            <div className="text-white pageBackground backdrop-filter backdrop-blur-sm dark:backdrop-blur-lg">
                 {children}
             </div>
         </>

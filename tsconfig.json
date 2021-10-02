@@ -1,14 +1,14 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "lib": ["dom", "dom.iterable", "esnext"],
+        "target": "es6",
+        "module": "commonjs",
+        "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
         "allowJs": true,
         "skipLibCheck": true,
         "strict": false,
         "forceConsistentCasingInFileNames": true,
         "noEmit": true,
         "esModuleInterop": true,
-        "module": "esnext",
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "isolatedModules": true,
@@ -21,7 +21,11 @@
             "@ui/*": ["./src/ui/*"],
             "@styles/*": ["./src/styles/*"],
             "@data/*": ["./src/data/*"],
-            "@interfaces/*": ["./src/types/*"]
+            "@interfaces/*": ["./src/types/*"],
+            "@hooks/*": ["./src/hooks/*"],
+            "@modules/*": ["./src/modules/*"],
+            "@global-stores/*": ["./src/global-stores/*"],
+            "@schemas/*": ["./src/schemas/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.hook.ts", "src"],

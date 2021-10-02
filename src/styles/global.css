@@ -2,6 +2,14 @@ body {
     position: relative;
 }
 
+.translateTransition {
+    --tw-translate-x: 200%;
+}
+
+.pageBackground {
+    background: rgba(17, 24, 39, 0.8);
+}
+
 .truncate-2-lines {
     max-height: 3.6em;
     line-height: 1.8em;
