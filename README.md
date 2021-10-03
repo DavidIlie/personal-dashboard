@@ -11,8 +11,8 @@ Things that are/need to be added:
 -   [ ] Setup page
     -   [x] First page (ask name)
     -   [x] Second page (create account)
-    -   [] Third page (modules - enable and add api keys for them)
-    -   [] Fourth page (summary)
+    -   [ ] Third page (modules - enable and add api keys for them)
+    -   [ ] Fourth page (summary)
 -   [ ] Make `/home` fetch data from the database
 -   [ ] Light/Dark mode
 
