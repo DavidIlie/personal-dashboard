@@ -1,9 +1,7 @@
 import { Slide, Fade } from "react-awesome-reveal";
 import { Field, Form, Formik } from "formik";
-import toast from "react-hot-toast";
 
 import useSettings from "@hooks/useSettings";
-import { userSchema } from "@schemas/first/userSchema";
 
 import Label from "@ui/form/Label";
 import Input from "@ui/form/Input";
@@ -13,7 +11,7 @@ interface Props {
     update: (step: number) => void;
 }
 
-const StepTwoAccountModules = ({ update }: Props): JSX.Element => {
+const StepThreeModulesModule = ({ update }: Props): JSX.Element => {
     const settings = useSettings();
 
     return (
@@ -23,7 +21,7 @@ const StepTwoAccountModules = ({ update }: Props): JSX.Element => {
                     <Fade cascade triggerOnce direction="left" duration={500}>
                         <h1 className="text-2xl pb-1">Progress:</h1>
                         <h2 className="ml-0.5 text-gray-300 font-semibold mt-2">
-                            Step 2 out of 4
+                            Step 3 out of 4
                         </h2>
                     </Fade>
                 </div>
@@ -35,14 +33,18 @@ const StepTwoAccountModules = ({ update }: Props): JSX.Element => {
                         delay={300}
                         duration={500}
                     >
-                        <h1 className="text-gray-200 font-semibold text-2xl px-4 mb-4">
-                            {settings.name}, let's setup your account.
-                        </h1>
+                        <div className="px-4">
+                            <h1 className="text-gray-200 font-semibold text-2xl -mb-1">
+                                {settings.name}, let's setup your modules.
+                            </h1>
+                            <h1 className="mb-4 text-gray-300 italic">
+                                *what aspects of the app you want enabled*
+                            </h1>
+                        </div>
 
                         <Formik
                             validateOnChange={false}
                             validateOnBlur={false}
-                            validationSchema={userSchema}
                             initialValues={{
                                 email: "",
                                 password: "",
@@ -51,18 +53,7 @@ const StepTwoAccountModules = ({ update }: Props): JSX.Element => {
                             onSubmit={async (data, { setSubmitting }) => {
                                 setSubmitting(true);
 
-                                const r = await fetch("/api/first/user", {
-                                    body: JSON.stringify(data),
-                                    method: "POST",
-                                });
-                                const response = await r.json();
-
-                                if (r.status !== 200) {
-                                    toast.error(response.message);
-                                } else {
-                                    toast.success("Updated!");
-                                    update(3);
-                                }
+                                console.log(data);
 
                                 setSubmitting(false);
                             }}
@@ -117,7 +108,7 @@ const StepTwoAccountModules = ({ update }: Props): JSX.Element => {
                         </Formik>
                         <h1
                             className="text-gray-300 font-semibold hover:underline cursor-pointer mt-2 -mb-4"
-                            onClick={() => update(1)}
+                            onClick={() => update(2)}
                         >
                             Or you can go back
                         </h1>
@@ -128,4 +119,4 @@ const StepTwoAccountModules = ({ update }: Props): JSX.Element => {
     );
 };
 
-export default StepTwoAccountModules;
+export default StepThreeModulesModule;

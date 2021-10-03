@@ -7,6 +7,7 @@ import prisma from "@lib/prisma";
 
 import StepOneNameModule from "@modules/setup/StepOneName";
 import StepTwoAccountModules from "@modules/setup/StepTwoAccount";
+import StepThreeModulesModule from "@modules/setup/StepThreeModules";
 
 interface Props {
     step: number;
@@ -56,7 +57,7 @@ const Home = ({ step }: Props): JSX.Element => {
                 <LeaveEntranceTransition
                     argument={currentStep === 3 && pendingAnimation === false}
                 >
-                    <h1>This is step 3</h1>
+                    <StepThreeModulesModule update={updateToNextStep} />
                 </LeaveEntranceTransition>
             </div>
         </>
