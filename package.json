@@ -7,7 +7,9 @@
         "build": "next build",
         "start": "next start",
         "format": "prettier --ignore-path --tab-width 4 .gitignore \"src/**/*.+(js|tsx)\" --write",
-        "seed": "ts-node prisma/seed.ts"
+        "prisma:seed": "ts-node prisma/seed.ts",
+        "prisma:studio": "prisma studio",
+        "prisma:migrate-dev": "prisma migrate dev"
     },
     "dependencies": {
         "@headlessui/react": "^1.4.1",

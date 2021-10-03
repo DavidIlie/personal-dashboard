@@ -3,11 +3,17 @@ import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { GetServerSideProps } from "next";
 
+import prisma from "@lib/prisma";
+
 import StepOneNameModule from "@modules/setup/StepOneName";
 import StepTwoAccountModules from "@modules/setup/StepTwoAccount";
 
-const Home = (): JSX.Element => {
-    const [currentStep, setCurrentStep] = useState<number>(1);
+interface Props {
+    step: number;
+}
+
+const Home = ({ step }: Props): JSX.Element => {
+    const [currentStep, setCurrentStep] = useState<number>(step || 1);
     const [pendingAnimation, setPendingAnimation] = useState<boolean>(false);
     const [pendingDisableScrollBar, setPendingDisabledScrollbar] =
         useState<boolean>(false);
@@ -75,10 +81,14 @@ const LeaveEntranceTransition = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
-    //determine the step that the user is on
+    let step = 1;
+    const settingsArray = await prisma.settings.findMany();
+    const settings = settingsArray[0];
+
+    if (settings.name !== "Example Name") step = 2;
 
     return {
-        props: {},
+        props: { step },
     };
 };
 

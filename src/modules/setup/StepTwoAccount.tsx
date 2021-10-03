@@ -2,10 +2,12 @@ import { Slide, Fade } from "react-awesome-reveal";
 import { Field, Form, Formik } from "formik";
 
 import useSettings from "@hooks/useSettings";
+import { userSchema } from "@schemas/first/userSchema";
 
 import Label from "@ui/form/Label";
 import Input from "@ui/form/Input";
 import Error from "@ui/form/Error";
+import toast from "react-hot-toast";
 
 interface Props {
     update: (step: number) => void;
@@ -40,6 +42,7 @@ const StepTwoAccountModules = ({ update }: Props): JSX.Element => {
                         <Formik
                             validateOnChange={false}
                             validateOnBlur={false}
+                            validationSchema={userSchema}
                             initialValues={{
                                 email: "",
                                 password: "",
@@ -48,62 +51,67 @@ const StepTwoAccountModules = ({ update }: Props): JSX.Element => {
                             onSubmit={async (data, { setSubmitting }) => {
                                 setSubmitting(true);
 
-                                console.log(data);
+                                const r = await fetch("/api/first/user", {
+                                    body: JSON.stringify(data),
+                                    method: "POST",
+                                });
+                                const response = await r.json();
+
+                                if (r.status !== 200) {
+                                    toast.error(response.message);
+                                } else {
+                                    toast.success("Updated!");
+                                    update(3);
+                                }
 
                                 setSubmitting(false);
                             }}
                         >
                             {({ errors, isSubmitting }) => (
                                 <Form>
-                                    <Form>
-                                        <div className="text-left mb-4">
-                                            <Label>What is your email?</Label>
-                                            <Field
-                                                name="email"
-                                                required
-                                                as={Input}
-                                                type="email"
-                                                placeholder="bob@bob.com"
-                                            />
-                                            <Error error={errors.email} />
-                                        </div>
-                                        <div className="text-left mb-4">
-                                            <Label>
-                                                What is your password?
-                                            </Label>
-                                            <Field
-                                                name="password"
-                                                required
-                                                as={Input}
-                                                type="password"
-                                                placeholder="Password123"
-                                            />
-                                            <Error error={errors.password} />
-                                        </div>
-                                        <div className="text-left mb-4">
-                                            <Label>
-                                                Please confirm your password.
-                                            </Label>
-                                            <Field
-                                                name="confirmPassword"
-                                                required
-                                                as={Input}
-                                                type="password"
-                                                placeholder="Password123"
-                                            />
-                                            <Error
-                                                error={errors.confirmPassword}
-                                            />
-                                        </div>
-                                        <button
-                                            type="submit"
-                                            className="bg-gray-800 px-3 py-2 rounded duration-150 hover:bg-gray-900"
-                                        >
-                                            {isSubmitting
-                                                ? "Submitting"
-                                                : "Continue"}
-                                        </button>
-                                    </Form>
+                                    <div className="text-left mb-4">
+                                        <Label>What is your email?</Label>
+                                        <Field
+                                            name="email"
+                                            required
+                                            as={Input}
+                                            type="email"
+                                            placeholder="bob@bob.com"
+                                        />
+                                        <Error error={errors.email} />
+                                    </div>
+                                    <div className="text-left mb-4">
+                                        <Label>What is your password?</Label>
+                                        <Field
+                                            name="password"
+                                            required
+                                            as={Input}
+                                            type="password"
+                                            placeholder="Password123"
+                                        />
+                                        <Error error={errors.password} />
+                                    </div>
+                                    <div className="text-left mb-4">
+                                        <Label>
+                                            Please confirm your password.
+                                        </Label>
+                                        <Field
+                                            name="confirmPassword"
+                                            required
+                                            as={Input}
+                                            type="password"
+                                            placeholder="Password123"
+                                        />
+                                        <Error error={errors.confirmPassword} />
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        className="bg-gray-800 px-3 py-2 rounded duration-150 hover:bg-gray-900"
+                                    >
+                                        {isSubmitting
+                                            ? "Submitting"
+                                            : "Continue"}
+                                    </button>
                                 </Form>
                             )}
                         </Formik>

@@ -17,6 +17,7 @@
 .env
 
 prisma/database.db
+prisma/database.db-journal
 
 # misc
 .DS_Store
