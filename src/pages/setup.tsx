@@ -53,6 +53,11 @@ const Home = ({ step }: Props): JSX.Element => {
                 >
                     <StepTwoAccountModules update={updateToNextStep} />
                 </LeaveEntranceTransition>
+                <LeaveEntranceTransition
+                    argument={currentStep === 3 && pendingAnimation === false}
+                >
+                    <h1>This is step 3</h1>
+                </LeaveEntranceTransition>
             </div>
         </>
     );
@@ -85,7 +90,10 @@ export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
     const settingsArray = await prisma.settings.findMany();
     const settings = settingsArray[0];
 
+    const user = await prisma.users.findFirst({ where: { id: 1 } });
+
     if (settings.name !== "Example Name") step = 2;
+    if (user) step = 3;
 
     return {
         props: { step },

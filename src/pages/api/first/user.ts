@@ -18,16 +18,31 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             if (body.password === body.confirmPassword) {
                 const password = await hashPassword(body.password);
 
-                const user = await prisma.users.create({
-                    data: {
-                        email: body.email,
-                        password,
-                    },
+                let userTest = await prisma.users.findFirst({
+                    where: { id: 1 },
                 });
 
-                console.log(user);
+                let user;
 
-                return res.json({ message: "made it" });
+                if (userTest) {
+                    user = await prisma.users.update({
+                        where: { id: 1 },
+                        data: {
+                            email: body.email,
+                            password,
+                        },
+                    });
+                } else {
+                    user = await prisma.users.create({
+                        data: {
+                            email: body.email,
+                            password,
+                            isAdmin: true,
+                        },
+                    });
+                }
+
+                return res.json(user);
             } else {
                 return res
                     .status(400)
