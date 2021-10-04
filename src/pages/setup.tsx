@@ -16,10 +16,12 @@ interface Props {
 const Home = ({ step }: Props): JSX.Element => {
     const [currentStep, setCurrentStep] = useState<number>(step || 1);
     const [pendingAnimation, setPendingAnimation] = useState<boolean>(false);
+    const [maxStep, setMaxStep] = useState<number>(step || currentStep);
     const [pendingDisableScrollBar, setPendingDisabledScrollbar] =
         useState<boolean>(false);
 
-    const updateToNextStep = (step: number) => {
+    const updateStep = (step: number) => {
+        if (step > maxStep) setMaxStep(step);
         setPendingAnimation(true);
         setPendingDisabledScrollbar(true);
 
@@ -47,17 +49,23 @@ const Home = ({ step }: Props): JSX.Element => {
                 <LeaveEntranceTransition
                     argument={currentStep === 1 && pendingAnimation === false}
                 >
-                    <StepOneNameModule update={updateToNextStep} />
+                    <StepOneNameModule update={updateStep} maxStep={maxStep} />
                 </LeaveEntranceTransition>
                 <LeaveEntranceTransition
                     argument={currentStep === 2 && pendingAnimation === false}
                 >
-                    <StepTwoAccountModules update={updateToNextStep} />
+                    <StepTwoAccountModules
+                        update={updateStep}
+                        maxStep={maxStep}
+                    />
                 </LeaveEntranceTransition>
                 <LeaveEntranceTransition
                     argument={currentStep === 3 && pendingAnimation === false}
                 >
-                    <StepThreeModulesModule update={updateToNextStep} />
+                    <StepThreeModulesModule
+                        update={updateStep}
+                        maxStep={maxStep}
+                    />
                 </LeaveEntranceTransition>
             </div>
         </>

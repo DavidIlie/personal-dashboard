@@ -9,9 +9,10 @@ import Error from "@ui/form/Error";
 
 interface Props {
     update: (step: number) => void;
+    maxStep: number;
 }
 
-const StepThreeModulesModule = ({ update }: Props): JSX.Element => {
+const StepThreeModulesModule = ({ update, maxStep }: Props): JSX.Element => {
     const settings = useSettings();
 
     return (
@@ -60,41 +61,7 @@ const StepThreeModulesModule = ({ update }: Props): JSX.Element => {
                         >
                             {({ errors, isSubmitting }) => (
                                 <Form>
-                                    <div className="text-left mb-4">
-                                        <Label>What is your email?</Label>
-                                        <Field
-                                            name="email"
-                                            required
-                                            as={Input}
-                                            type="email"
-                                            placeholder="bob@bob.com"
-                                        />
-                                        <Error error={errors.email} />
-                                    </div>
-                                    <div className="text-left mb-4">
-                                        <Label>What is your password?</Label>
-                                        <Field
-                                            name="password"
-                                            required
-                                            as={Input}
-                                            type="password"
-                                            placeholder="Password123"
-                                        />
-                                        <Error error={errors.password} />
-                                    </div>
-                                    <div className="text-left mb-4">
-                                        <Label>
-                                            Please confirm your password.
-                                        </Label>
-                                        <Field
-                                            name="confirmPassword"
-                                            required
-                                            as={Input}
-                                            type="password"
-                                            placeholder="Password123"
-                                        />
-                                        <Error error={errors.confirmPassword} />
-                                    </div>
+                                    <h1>Work in progress</h1>
                                     <button
                                         type="submit"
                                         className="bg-gray-800 px-3 py-2 rounded duration-150 hover:bg-gray-900"
@@ -106,12 +73,22 @@ const StepThreeModulesModule = ({ update }: Props): JSX.Element => {
                                 </Form>
                             )}
                         </Formik>
-                        <h1
-                            className="text-gray-300 font-semibold hover:underline cursor-pointer mt-2 -mb-4"
-                            onClick={() => update(2)}
-                        >
-                            Or you can go back
-                        </h1>
+                        <div className="flex justify-center gap-2">
+                            <h1
+                                className="text-gray-300 font-semibold hover:underline cursor-pointer mt-2 -mb-4"
+                                onClick={() => update(2)}
+                            >
+                                Or you can go back
+                            </h1>
+                            {maxStep > 3 && (
+                                <h1
+                                    className="text-gray-300 font-semibold hover:underline cursor-pointer mt-2 -mb-4"
+                                    onClick={() => update(4)}
+                                >
+                                    Go to the next one
+                                </h1>
+                            )}
+                        </div>
                     </Fade>
                 </div>
             </div>

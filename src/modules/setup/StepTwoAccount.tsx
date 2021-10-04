@@ -11,9 +11,10 @@ import Error from "@ui/form/Error";
 
 interface Props {
     update: (step: number) => void;
+    maxStep: number;
 }
 
-const StepTwoAccountModules = ({ update }: Props): JSX.Element => {
+const StepTwoAccountModules = ({ update, maxStep }: Props): JSX.Element => {
     const settings = useSettings();
 
     return (
@@ -115,12 +116,22 @@ const StepTwoAccountModules = ({ update }: Props): JSX.Element => {
                                 </Form>
                             )}
                         </Formik>
-                        <h1
-                            className="text-gray-300 font-semibold hover:underline cursor-pointer mt-2 -mb-4"
-                            onClick={() => update(1)}
-                        >
-                            Or you can go back
-                        </h1>
+                        <div className="flex justify-center gap-2">
+                            <h1
+                                className="text-gray-300 font-semibold hover:underline cursor-pointer mt-2 -mb-4"
+                                onClick={() => update(1)}
+                            >
+                                Or you can go back
+                            </h1>
+                            {maxStep > 2 && (
+                                <h1
+                                    className="text-gray-300 font-semibold hover:underline cursor-pointer mt-2 -mb-4"
+                                    onClick={() => update(3)}
+                                >
+                                    Go to the next one
+                                </h1>
+                            )}
+                        </div>
                     </Fade>
                 </div>
             </div>

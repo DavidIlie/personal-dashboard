@@ -14,9 +14,10 @@ import Error from "@ui/form/Error";
 
 interface Props {
     update: (step: number) => void;
+    maxStep: number;
 }
 
-const StepOneNameModule = ({ update }: Props): JSX.Element => {
+const StepOneNameModule = ({ update, maxStep }: Props): JSX.Element => {
     const { updateSettings } = useSettingsStore();
 
     return (
@@ -112,6 +113,14 @@ const StepOneNameModule = ({ update }: Props): JSX.Element => {
                                 </Form>
                             )}
                         </Formik>
+                        {maxStep > 1 && (
+                            <h1
+                                className="text-gray-300 font-semibold hover:underline cursor-pointer mt-2 -mb-4"
+                                onClick={() => update(2)}
+                            >
+                                Go to the next one
+                            </h1>
+                        )}
                     </Fade>
                 </div>
             </div>
