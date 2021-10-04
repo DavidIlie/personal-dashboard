@@ -16,7 +16,7 @@ interface Props {
 const Home = ({ step }: Props): JSX.Element => {
     const [currentStep, setCurrentStep] = useState<number>(step || 1);
     const [pendingAnimation, setPendingAnimation] = useState<boolean>(false);
-    const [maxStep, setMaxStep] = useState<number>(step || currentStep);
+    const [maxStep, setMaxStep] = useState<number>(step || step);
     const [pendingDisableScrollBar, setPendingDisabledScrollbar] =
         useState<boolean>(false);
 
