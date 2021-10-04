@@ -63,7 +63,7 @@ const SetupCard = ({
                         <div
                             className={`grid ${
                                 step >= 2 && maxStep > step && "grid-cols-2"
-                            } divide-x divide-gray-800`}
+                            } divide-x-2 divide-gray-600`}
                         >
                             {step >= 2 && (
                                 <h1

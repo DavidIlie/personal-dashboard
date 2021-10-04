@@ -1,5 +1,5 @@
 import { NextSeo } from "next-seo";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Transition } from "@headlessui/react";
 import { GetServerSideProps } from "next";
 
@@ -9,16 +9,18 @@ import StepOneNameModule from "@modules/setup/StepOneName";
 import StepTwoAccountModules from "@modules/setup/StepTwoAccount";
 import StepThreeModulesModule from "@modules/setup/StepThreeModules";
 
-interface Props {
-    step: number;
-}
-
-const Home = ({ step }: Props): JSX.Element => {
+const Setup = ({ step }: { step: number }): JSX.Element => {
     const [currentStep, setCurrentStep] = useState<number>(step || 1);
     const [pendingAnimation, setPendingAnimation] = useState<boolean>(false);
     const [maxStep, setMaxStep] = useState<number>(step || step);
     const [pendingDisableScrollBar, setPendingDisabledScrollbar] =
-        useState<boolean>(false);
+        useState<boolean>(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setPendingDisabledScrollbar(false);
+        }, 700);
+    }, []);
 
     const updateStep = (step: number) => {
         if (step > maxStep) setMaxStep(step);
@@ -109,4 +111,4 @@ export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
     };
 };
 
-export default Home;
+export default Setup;
