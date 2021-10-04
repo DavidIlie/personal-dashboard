@@ -96,7 +96,7 @@ const LeaveEntranceTransition = ({
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
+export const getServerSideProps: GetServerSideProps = async () => {
     let step = 1;
     const settingsArray = await prisma.settings.findMany();
     const settings = settingsArray[0];
