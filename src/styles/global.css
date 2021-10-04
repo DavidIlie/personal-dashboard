@@ -2,16 +2,8 @@ body {
     position: relative;
 }
 
-@media (min-width: 1536px) {
-    .translateTransition {
-        --tw-translate-x: 300%;
-    }
-}
-
-@media (max-width: 640px) {
-    .translateTransition {
-        --tw-translate-x: 200%;
-    }
+.translateTransition {
+    --tw-translate-x: 200%;
 }
 
 .pageBackground {
