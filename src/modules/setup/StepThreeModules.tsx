@@ -51,7 +51,7 @@ const StepThreeModulesModule = ({ update, maxStep }: Props): JSX.Element => {
 
                 <div className="sm:flex items-center gap-2 mb-2">
                     <div>
-                        <Radio label="IP Location Modules" />
+                        <Radio label="IP Location Module" />
                     </div>
                     {"- "}
                     <Tooltip content="See example" animation="shift-away">
