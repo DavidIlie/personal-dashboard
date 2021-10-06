@@ -15,10 +15,12 @@ const WeatherModuleModal = ({
             updateModalState={updateModalState}
             title="Insert API Key"
         >
-            <h1>
-                It is required that you put an API key in order to enable this
-                module.
-            </h1>
+            <>
+                <h1 className="mb-1">
+                    It is required that you put an API key in order to enable
+                    this module.
+                </h1>
+            </>
         </Modal>
     );
 };

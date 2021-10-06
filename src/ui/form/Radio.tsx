@@ -1,5 +1,6 @@
 interface RadioProps {
     label: string;
+    checked?: boolean;
 }
 
 const Radio = ({ label, ...rest }: RadioProps): JSX.Element => {
