@@ -31,10 +31,11 @@ model Services {
 
 model Settings {
   id Int @id @default(autoincrement())
-  name String
+  name String?
   newsKey String?
   weatherKey String?
   ipKey String?
   prefered_theme String @default("dark")
   setup Boolean @default(true)
+  default_location String?
 }

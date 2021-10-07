@@ -35,19 +35,19 @@ const SetupCard = ({
                             </h2>
                         </Fade>
                     ) : (
-                        <>
+                        <Fade direction="left" triggerOnce>
                             <h1 className="text-2xl pb-1">Progress:</h1>
                             <h2 className="ml-0.5 text-gray-300 font-semibold mt-2">
                                 Step {step} out of 4
                             </h2>
-                        </>
+                        </Fade>
                     )}
                 </div>
                 <div className="bg-indigo-800 flex-col justify-center px-8 py-6 text-center rounded-r">
                     <Fade
                         cascade
                         triggerOnce
-                        direction="right"
+                        direction="left"
                         delay={300}
                         duration={500}
                     >
@@ -56,7 +56,7 @@ const SetupCard = ({
                     <Fade
                         cascade
                         triggerOnce
-                        direction="left"
+                        direction="up"
                         delay={400}
                         duration={500}
                     >

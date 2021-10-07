@@ -5,9 +5,7 @@ const prisma = new PrismaClient();
 const main = async () => {
     await prisma.settings.create({
         data: {
-            prefered_theme: "dark",
             setup: true,
-            name: "Example Name",
         },
     });
 };

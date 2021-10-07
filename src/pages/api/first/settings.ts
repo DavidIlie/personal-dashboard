@@ -18,9 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 where: {
                     id: settings.id,
                 },
-                data: {
-                    name: body.name,
-                },
+                data: body,
             });
             return res.status(200).json(updatedSettings);
         } else {

@@ -103,7 +103,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     const user = await prisma.users.findFirst({ where: { id: 1 } });
 
-    if (settings.name !== "Example Name") step = 2;
+    if (settings.name !== null) step = 2;
     if (user) step = 3;
 
     return {

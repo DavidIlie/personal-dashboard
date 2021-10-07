@@ -35,7 +35,7 @@ const StepOneNameModule = ({ update, maxStep }: Props): JSX.Element => {
                 validateOnChange={false}
                 validateOnBlur={false}
                 validationSchema={settingSchema}
-                initialValues={{ name: "" }}
+                initialValues={{ name: "", default_location: "" }}
                 onSubmit={async (data, { setSubmitting }) => {
                     setSubmitting(true);
 
@@ -69,16 +69,14 @@ const StepOneNameModule = ({ update, maxStep }: Props): JSX.Element => {
                             <Error error={errors.name} />
                         </div>
                         <div className="text-left mb-4">
-                            <Label>How are you feeling today?</Label>
-                            <Select>
-                                <option>Excellent</option>
-                                <option>Good</option>
-                                <option>Decent</option>
-                                <option>Relaxing</option>
-                                <option>Could be better</option>
-                                <option>Bad</option>
-                                <option>Terrible</option>
-                            </Select>
+                            <Label>Which city are you from?</Label>
+                            <Field
+                                name="default_location"
+                                required
+                                as={Input}
+                                placeholder="This is for location purposes!"
+                            />
+                            <Error error={errors.default_location} />
                         </div>
                         <button
                             type="submit"
