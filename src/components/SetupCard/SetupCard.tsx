@@ -43,7 +43,7 @@ const SetupCard = ({
                         </>
                     )}
                 </div>
-                <div className="bg-indigo-800 flex-col justify-center px-8 py-6 text-center rounded">
+                <div className="bg-indigo-800 flex-col justify-center px-8 py-6 text-center rounded-r">
                     <Fade
                         cascade
                         triggerOnce
