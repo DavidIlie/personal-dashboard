@@ -8,6 +8,7 @@ import Tooltip from "@ui/Tooltip";
 import Radio from "@ui/form/Radio";
 
 import WeatherModuleModal from "./modulesModals/WeatherModuleModal";
+import NewsModuleModal from "./modulesModals/NewsModuleModal";
 
 interface Props {
     update: (step: number) => void;
@@ -18,8 +19,8 @@ const StepThreeModulesModule = ({ update, maxStep }: Props): JSX.Element => {
     const settings = useSettings();
 
     const [openWeatherModal, setOpenWeatherModal] = useState<boolean>(false);
-    const [openNewsModule, setOpenNewsModule] = useState<boolean>(false);
-    const [openIPModule, setOpenIPModule] = useState<boolean>(false);
+    const [openNewsModal, setOpenNewsModal] = useState<boolean>(false);
+    const [openIPModal, setOpenIPModal] = useState<boolean>(false);
 
     return (
         <>
@@ -54,7 +55,9 @@ const StepThreeModulesModule = ({ update, maxStep }: Props): JSX.Element => {
                     </div>
 
                     <div className="sm:flex items-center gap-2 mb-2">
-                        <div>
+                        <div
+                            onClick={() => setOpenNewsModal(!openWeatherModal)}
+                        >
                             <Radio
                                 label="News Module"
                                 checked={settings.newsKey !== null}
@@ -91,6 +94,10 @@ const StepThreeModulesModule = ({ update, maxStep }: Props): JSX.Element => {
             <WeatherModuleModal
                 isOpen={openWeatherModal}
                 updateModalState={() => setOpenWeatherModal(!openWeatherModal)}
+            />
+            <NewsModuleModal
+                isOpen={openNewsModal}
+                updateModalState={() => setOpenNewsModal(!openNewsModal)}
             />
         </>
     );

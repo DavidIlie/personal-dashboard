@@ -1,3 +1,5 @@
+import React from "react";
+
 import { UpDown } from "@components/Animations/Animation";
 import SVG from "@components/SVG";
 
@@ -6,6 +8,17 @@ interface AppLayoutProps {
 }
 
 export const AppLayout = ({ children }: AppLayoutProps): JSX.Element => {
+    return (
+        <>
+            <Background />
+            <div className="text-white pageBackground backdrop-filter backdrop-blur-sm dark:backdrop-blur-lg">
+                {children}
+            </div>
+        </>
+    );
+};
+
+const Background = React.memo(() => {
     return (
         <>
             <UpDown type="normal">
@@ -40,9 +53,6 @@ export const AppLayout = ({ children }: AppLayoutProps): JSX.Element => {
                 <SVG icon="circle" width={6} left="4%" top="20%" />
                 <SVG icon="circle" width={12} left="50%" top="60%" />
             </UpDown>
-            <div className="text-white pageBackground backdrop-filter backdrop-blur-sm dark:backdrop-blur-lg">
-                {children}
-            </div>
         </>
     );
-};
+});
