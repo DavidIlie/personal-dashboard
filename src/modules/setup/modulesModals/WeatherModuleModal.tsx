@@ -1,4 +1,5 @@
 import { Form, Field, Formik } from "formik";
+import { useRef } from "react";
 import toast from "react-hot-toast";
 
 import Label from "@ui/form/Label";
@@ -19,6 +20,23 @@ const WeatherModuleModal = ({
     updateModalState,
 }: Props): JSX.Element => {
     const { updateSettings, settings } = useSettingsStore();
+
+    const formikRef = useRef<HTMLFormElement>();
+
+    const RemoveKey = async () => {
+        const r = await fetch("/api/first/modules/weather", {
+            method: "DELETE",
+        });
+        const response = await r.json();
+
+        if (r.status !== 200) {
+            toast.error(response.message);
+        } else {
+            updateSettings(response);
+            updateModalState();
+            toast.success("Deleted successfully!");
+        }
+    };
 
     return (
         <Modal
@@ -89,11 +107,7 @@ const WeatherModuleModal = ({
                                     <button
                                         type="button"
                                         className="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-100 bg-red-600 border border-transparent rounded-md hover:bg-red-700 duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                                        onClick={() =>
-                                            toast("coming soon!", {
-                                                icon: "🙏",
-                                            })
-                                        }
+                                        onClick={() => RemoveKey()}
                                     >
                                         Remove Key
                                     </button>
