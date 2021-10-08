@@ -20,12 +20,6 @@ export const AppLayout = ({ children }: AppLayoutProps): JSX.Element => {
                 <SVG icon="triangle" width={12} stroke left="90%" top="50%" />
 
                 <SVG icon="triangle" width={16} stroke left="30%" top="65%" />
-
-                <SVG icon="triangle" width={24} stroke left="35%" top="58%" />
-
-                <SVG icon="triangle" width={12} stroke left="20%" top="50%" />
-
-                <SVG icon="triangle" width={16} stroke left="10%" top="85%" />
             </UpDown>
             <UpDown type="slow">
                 <SVG
@@ -44,13 +38,7 @@ export const AppLayout = ({ children }: AppLayoutProps): JSX.Element => {
                     top="70%"
                 />
                 <SVG icon="circle" width={6} left="4%" top="20%" />
-                <SVG
-                    icon="circle"
-                    width={12}
-                    left="50%"
-                    top="60%"
-                    color="gray.100"
-                />
+                <SVG icon="circle" width={12} left="50%" top="60%" />
             </UpDown>
             <div className="text-white pageBackground backdrop-filter backdrop-blur-sm dark:backdrop-blur-lg">
                 {children}
