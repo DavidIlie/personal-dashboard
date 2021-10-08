@@ -21,8 +21,6 @@ const WeatherModuleModal = ({
 }: Props): JSX.Element => {
     const { updateSettings, settings } = useSettingsStore();
 
-    const formikRef = useRef<HTMLFormElement>();
-
     const RemoveKey = async () => {
         const r = await fetch("/api/first/modules/weather", {
             method: "DELETE",
