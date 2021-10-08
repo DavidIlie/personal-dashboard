@@ -1,9 +1,13 @@
 import { Form, Field, Formik } from "formik";
+import toast from "react-hot-toast";
 
 import Label from "@ui/form/Label";
 import Input from "@ui/form/Input";
+import Error from "@ui/form/Error";
 
 import Modal from "@ui/Modal";
+
+import { useSettingsStore } from "@global-stores/useSettingsStore";
 
 interface Props {
     isOpen: boolean;
@@ -14,6 +18,8 @@ const WeatherModuleModal = ({
     isOpen,
     updateModalState,
 }: Props): JSX.Element => {
+    const { updateSettings, settings } = useSettingsStore();
+
     return (
         <Modal
             isOpen={isOpen}
@@ -45,8 +51,26 @@ const WeatherModuleModal = ({
                 <Formik
                     validateOnChange={false}
                     validateOnBlur={false}
-                    initialValues={{ api_key: "" }}
-                    onSubmit={async (data, { setSubmitting, resetForm }) => {}}
+                    initialValues={{ api_key: settings.weatherKey || "" }}
+                    onSubmit={async (data, { setSubmitting }) => {
+                        setSubmitting(true);
+
+                        const r = await fetch("/api/first/modules/weather", {
+                            method: "POST",
+                            body: JSON.stringify(data),
+                        });
+                        const response = await r.json();
+
+                        if (r.status !== 200) {
+                            toast.error(response.message);
+                        } else {
+                            updateSettings(response);
+                            toast.success("Added successfully!");
+                            updateModalState();
+                        }
+
+                        setSubmitting(false);
+                    }}
                 >
                     {({ errors, isSubmitting }) => (
                         <Form>
@@ -58,11 +82,25 @@ const WeatherModuleModal = ({
                                     darker
                                     as={Input}
                                 />
+                                <Error error={errors.api_key} />
                             </div>
                             <div className="mt-4 flex justify-end gap-2">
+                                {settings.weatherKey !== null && (
+                                    <button
+                                        type="button"
+                                        className="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-100 bg-red-600 border border-transparent rounded-md hover:bg-red-700 duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                                        onClick={() =>
+                                            toast("coming soon!", {
+                                                icon: "🙏",
+                                            })
+                                        }
+                                    >
+                                        Remove Key
+                                    </button>
+                                )}
                                 <button
                                     type="button"
-                                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-100 bg-blue-100 bg-dark-gray-900 border border-transparent rounded-md hover:bg-dark-gray-800 duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-100 bg-dark-gray-900 border border-transparent rounded-md hover:bg-gray-900 duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                                     onClick={updateModalState}
                                 >
                                     Nevermind

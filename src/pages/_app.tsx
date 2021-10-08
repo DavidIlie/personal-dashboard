@@ -1,8 +1,10 @@
 import { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import { DefaultSeo } from "next-seo";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClientProvider } from "react-query";
 import { Toaster } from "react-hot-toast";
+
+import { queryClient } from "@lib/queryClient";
 
 import Loader from "@components/Loader";
 import AppLayout from "@components/AppLayout";
@@ -15,7 +17,6 @@ import "@styles/global.css";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
 
-const queryClient = new QueryClient();
 export default function PersonalDashboard({
     Component,
     pageProps,

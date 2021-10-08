@@ -40,7 +40,10 @@ const StepThreeModulesModule = ({ update, maxStep }: Props): JSX.Element => {
                                 setOpenWeatherModal(!openWeatherModal)
                             }
                         >
-                            <Radio label="Weather Module" checked={false} />
+                            <Radio
+                                label="Weather Module"
+                                checked={settings.weatherKey !== null}
+                            />
                         </div>
                         {"- "}
                         <Tooltip content="See example" animation="shift-away">
@@ -52,7 +55,10 @@ const StepThreeModulesModule = ({ update, maxStep }: Props): JSX.Element => {
 
                     <div className="sm:flex items-center gap-2 mb-2">
                         <div>
-                            <Radio label="News Module" checked={false} />
+                            <Radio
+                                label="News Module"
+                                checked={settings.newsKey !== null}
+                            />
                         </div>
                         {"- "}
                         <Tooltip content="See example" animation="shift-away">
@@ -64,7 +70,10 @@ const StepThreeModulesModule = ({ update, maxStep }: Props): JSX.Element => {
 
                     <div className="sm:flex items-center gap-2 mb-2">
                         <div>
-                            <Radio label="IP Location Module" checked={false} />
+                            <Radio
+                                label="IP Location Module"
+                                checked={settings.ipKey !== null}
+                            />
                         </div>
                         {"- "}
                         <Tooltip content="See example" animation="shift-away">

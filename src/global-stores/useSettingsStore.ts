@@ -4,6 +4,9 @@ interface SettingsType {
     prefered_theme: "light" | "dark";
     name: string;
     setup: boolean;
+    newsKey: String;
+    weatherKey: String;
+    ipKey: String;
 }
 
 type Store = {
