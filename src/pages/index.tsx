@@ -41,8 +41,6 @@ const Home = ({
    error,
    message,
 }: HomeProps): JSX.Element => {
-   console.log(articles);
-
    if (error) {
       console.log(message);
       return (
@@ -200,6 +198,9 @@ export async function getServerSideProps() {
       const postRequest = await fetch(
          `https://newsapi.org/v2/everything?q=technology&sources=the-verge&sortBy=publishedAt&pageSize=8&apiKey=${process.env.NEWS_API_KEY}`
       );
+      if (postRequest.status !== 200) {
+         return { props: { error: true, message: postRequest } };
+      }
       const { articles } = await postRequest.json();
       return {
          props: {
