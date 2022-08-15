@@ -41,12 +41,14 @@ const Home = ({
    error,
    message,
 }: HomeProps): JSX.Element => {
+   console.log(articles);
+
    if (error) {
       console.log(message);
       return (
          <>
             <NextSeo title="Error" />
-            <div className="h-screen flex justify-center items-center">
+            <div className="min-h-screen flex justify-center items-center">
                <Fade direction="down">
                   <div>
                      <h1 className="max-w-3xl text-4xl font-medium text-center gradient-text lg:text-6xl pb-2">
@@ -103,7 +105,7 @@ const Home = ({
    return (
       <>
          <NextSeo title="Home" />
-         <div className="3xl:px-72 2xl:px-32 xl:px-24 md:px-16 3xl:pt-24 2xl:pt-18 xl:pt-16 md:pt-16 px-6 pt-6">
+         <div className="min-h-screen 3xl:px-72 2xl:px-32 xl:px-24 md:px-16 3xl:pt-24 2xl:pt-18 xl:pt-16 md:pt-16 px-6 pt-6">
             <Fade delay={500} direction="down" triggerOnce>
                <p className="ml-1 font-semibold text-xl gradient-text">
                   {dateFormat(now, "dddd, dS mmmm yyyy, h:MM TT")}
