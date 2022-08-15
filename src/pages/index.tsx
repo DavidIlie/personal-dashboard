@@ -199,7 +199,7 @@ export async function getServerSideProps() {
          `https://newsapi.org/v2/everything?q=technology&sources=the-verge&sortBy=publishedAt&pageSize=8&apiKey=${process.env.NEWS_API_KEY}`
       );
       if (postRequest.status !== 200) {
-         return { props: { error: true, message: postRequest } };
+         return { props: { error: true, message: postRequest.status } };
       }
       const { articles } = await postRequest.json();
       return {
