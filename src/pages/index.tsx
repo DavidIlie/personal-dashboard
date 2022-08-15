@@ -195,10 +195,19 @@ const Home = ({
 
 export async function getServerSideProps() {
    try {
-      const url = `https://newsapi.org/v2/everything?q=technology&sources=the-verge&sortBy=publishedAt&pageSize=8&apiKey=${process.env.NEWS_API_KEY}`;
-      const postRequest = await fetch(url);
+      const postRequest = await fetch(
+         `https://newsapi.org/v2/everything?q=technology&sources=the-verge&sortBy=publishedAt&pageSize=8&apiKey=${process.env.NEWS_API_KEY}`
+      );
       if (postRequest.status !== 200) {
-         return { props: { error: true, message: url } };
+         return {
+            props: {
+               error: true,
+               message: {
+                  status: postRequest.status,
+                  message: (await postRequest.json()) || postRequest.text,
+               },
+            },
+         };
       }
       const { articles } = await postRequest.json();
       return {
