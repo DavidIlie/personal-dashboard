@@ -30,14 +30,39 @@ interface HomeProps {
    ];
    weather_api_key: string;
    ip_locator_key: string;
+   error?: boolean;
+   message?: any;
 }
 
 const Home = ({
    articles,
    weather_api_key,
    ip_locator_key,
+   error,
+   message,
 }: HomeProps): JSX.Element => {
-   var now = new Date();
+   if (error) {
+      console.log(message);
+      return (
+         <>
+            <NextSeo title="Error" />
+            <div className="h-screen flex justify-center items-center">
+               <Fade direction="down">
+                  <div>
+                     <h1 className="max-w-3xl text-4xl font-medium text-center gradient-text lg:text-6xl pb-2">
+                        There was an error.
+                     </h1>
+                     <p className="text-2xl text-gray-500 text-center">
+                        Check console!
+                     </p>
+                  </div>
+               </Fade>
+            </div>
+         </>
+      );
+   }
+
+   let now = new Date();
 
    const [weather, setWeather] = useState<weatherProps>({
       weather: [
@@ -169,18 +194,21 @@ const Home = ({
 };
 
 export async function getServerSideProps() {
-   const postRequest = await fetch(
-      `https://newsapi.org/v2/everything?q=technology&sources=the-verge&sortBy=publishedAt&pageSize=8&apiKey=${process.env.NEWS_API_KEY}`
-   );
-   const { articles } = await postRequest.json();
-
-   return {
-      props: {
-         articles: articles,
-         weather_api_key: process.env.WEATHER_API_KEY,
-         ip_locator_key: process.env.IP_LOCATOR_KEY,
-      },
-   };
+   try {
+      const postRequest = await fetch(
+         `https://newsapi.org/v2/everything?q=technology&sources=the-verge&sortBy=publishedAt&pageSize=8&apiKey=${process.env.NEWS_API_KEY}`
+      );
+      const { articles } = await postRequest.json();
+      return {
+         props: {
+            articles: articles,
+            weather_api_key: process.env.WEATHER_API_KEY,
+            ip_locator_key: process.env.IP_LOCATOR_KEY,
+         },
+      };
+   } catch (error) {
+      return { props: { error: true, message: error } };
+   }
 }
 
 export default Home;
