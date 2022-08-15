@@ -169,7 +169,7 @@ const Home = ({
             <Fade delay={2000} triggerOnce>
                <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
                   {articles
-                     .sort(
+                     ?.sort(
                         (a, b) =>
                            new Date(a.publishedAt).getTime() -
                            new Date(b.publishedAt).getTime()
