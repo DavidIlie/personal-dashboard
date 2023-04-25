@@ -16,7 +16,7 @@ specifiers:
   next-seo: ^6.0.0
   postcss: ^8.4.23
   react: 17.0.2
-  react-awesome-reveal: ^4.2.3
+  react-awesome-reveal: ^3.8.1
   react-dom: 17.0.2
   react-icons: ^4.8.0
   react-modal: ^3.16.1
@@ -36,7 +36,7 @@ dependencies:
   next: 12.2.5_sfoxds7t5ydpegc3knd667wn6m
   next-seo: 6.0.0_pzmtmsmkyiq4foirxc7gldcjme
   react: 17.0.2
-  react-awesome-reveal: 4.2.3_lppulqnmkkrmfes7eqrbphxjnm
+  react-awesome-reveal: 3.8.1_kkao2wr5b4l65ynsydrqjhjqwa
   react-dom: 17.0.2_react@17.0.2
   react-icons: 4.8.0_react@17.0.2
   react-modal: 3.16.1_sfoxds7t5ydpegc3knd667wn6m
@@ -1293,16 +1293,17 @@ packages:
       strip-json-comments: 2.0.1
     dev: false
 
-  /react-awesome-reveal/4.2.3_lppulqnmkkrmfes7eqrbphxjnm:
-    resolution: {integrity: sha512-wln5oVUw8qBTF0flLyHxbcDsM+fpYvcQZ0aih9YL1aK1CiVewEp7D/ltCsQ8lKQEsZ50udvmje4HPKxyiUDp8Q==}
+  /react-awesome-reveal/3.8.1_kkao2wr5b4l65ynsydrqjhjqwa:
+    resolution: {integrity: sha512-cB+XubgAa7QJ9ibkHePiVGTOzRKokqdDOP+yLfQtw5uu+xsAR/kwktLntMZev+1GBz2NhlcpbYvKqEbVIkKfLw==}
     peerDependencies:
-      '@emotion/react': ^11.0.0
       react: '>=16.14.0'
     dependencies:
       '@emotion/react': 11.10.6_kkao2wr5b4l65ynsydrqjhjqwa
       react: 17.0.2
-      react-intersection-observer: 9.4.3_react@17.0.2
-      react-is: 18.2.0
+      react-intersection-observer: 8.34.0_react@17.0.2
+      react-is: 17.0.2
+    transitivePeerDependencies:
+      - '@types/react'
     dev: false
 
   /react-dom/17.0.2_react@17.0.2:
@@ -1324,10 +1325,10 @@ packages:
       react: 17.0.2
     dev: false
 
-  /react-intersection-observer/9.4.3_react@17.0.2:
-    resolution: {integrity: sha512-WNRqMQvKpupr6MzecAQI0Pj0+JQong307knLP4g/nBex7kYfIaZsPpXaIhKHR+oV8z+goUbH9e10j6lGRnTzlQ==}
+  /react-intersection-observer/8.34.0_react@17.0.2:
+    resolution: {integrity: sha512-TYKh52Zc0Uptp5/b4N91XydfSGKubEhgZRtcg1rhTKABXijc4Sdr1uTp5lJ8TN27jwUsdXxjHXtHa0kPj704sw==}
     peerDependencies:
-      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0
     dependencies:
       react: 17.0.2
     dev: false
@@ -1336,8 +1337,8 @@ packages:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
 
-  /react-is/18.2.0:
-    resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
+  /react-is/17.0.2:
+    resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
     dev: false
 
   /react-lifecycles-compat/3.0.4:

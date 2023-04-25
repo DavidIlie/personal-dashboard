@@ -18,13 +18,12 @@
       "next": "12.2.5",
       "next-seo": "^6.0.0",
       "react": "17.0.2",
-      "react-awesome-reveal": "^4.2.3",
+      "react-awesome-reveal": "^3.8.1",
       "react-dom": "17.0.2",
       "react-icons": "^4.8.0",
       "react-modal": "^3.16.1",
       "react-query": "^3.39.3",
-      "react-toastify": "^9.1.2",
-      "sharp": "^0.32.0"
+      "react-toastify": "^9.1.2"
    },
    "devDependencies": {
       "@types/node": "18.16.0",
