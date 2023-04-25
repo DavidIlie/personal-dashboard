@@ -46,13 +46,13 @@ const Home = ({
       return (
          <>
             <NextSeo title="Error" />
-            <div className="min-h-screen flex justify-center items-center">
+            <div className="flex items-center justify-center min-h-screen">
                <Fade direction="down">
                   <div>
-                     <h1 className="max-w-3xl text-4xl font-medium text-center gradient-text lg:text-6xl pb-2">
+                     <h1 className="max-w-3xl pb-2 text-4xl font-medium text-center gradient-text lg:text-6xl">
                         There was an error.
                      </h1>
-                     <p className="text-2xl text-gray-500 text-center">
+                     <p className="text-2xl text-center text-gray-500">
                         Check console!
                      </p>
                   </div>
@@ -83,7 +83,7 @@ const Home = ({
 
    const twentyFourHoursInMs = 1000 * 60 * 60 * 24;
 
-   const { isLoading, data } = useQuery(
+   const { isLoading } = useQuery(
       `getLocation`,
       async () =>
          await weatherQuery(
@@ -103,20 +103,20 @@ const Home = ({
    return (
       <>
          <NextSeo title="Home" />
-         <div className="min-h-screen 3xl:px-72 2xl:px-32 xl:px-24 md:px-16 3xl:pt-24 2xl:pt-18 xl:pt-16 md:pt-16 px-6 pt-6">
+         <div className="min-h-screen px-6 pt-6 3xl:px-72 2xl:px-32 xl:px-24 md:px-16 3xl:pt-24 2xl:pt-18 xl:pt-16 md:pt-16">
             <Fade delay={500} direction="down" triggerOnce>
-               <p className="ml-1 font-semibold text-xl gradient-text">
+               <p className="ml-1 text-xl font-semibold gradient-text">
                   {dateFormat(now, "dddd, dS mmmm yyyy, h:MM TT")}
                </p>
             </Fade>
             <Fade direction="left" triggerOnce>
-               <h1 className="2xl:text-5xl xl:text-5xl text-4xl font-semibold">
+               <h1 className="text-4xl font-semibold 2xl:text-5xl xl:text-5xl">
                   {getHumanizedDate()}{" "}
                   <span className="gradient-text">David!</span>
                </h1>
             </Fade>
             <Fade delay={750} direction="up" triggerOnce>
-               <p className="ml-1 mt-2 font-semibold text-xl">
+               <p className="mt-2 ml-1 text-xl font-semibold">
                   {location.city === "pending" ? (
                      <h1 className="gradient-text">Loading weather data...</h1>
                   ) : (
@@ -139,7 +139,7 @@ const Home = ({
                            content={location.country}
                            animation="shift-away"
                         >
-                           <span className="gradient-text cursor-pointer">
+                           <span className="cursor-pointer gradient-text">
                               {location.city}
                            </span>
                         </Tooltip>
@@ -148,12 +148,12 @@ const Home = ({
                </p>
             </Fade>
             <Fade delay={750} direction="left" triggerOnce>
-               <h1 className="mt-8 2xl:text-4xl xl:text-4xl text-3xl font-semibold">
+               <h1 className="mt-8 text-3xl font-semibold 2xl:text-4xl xl:text-4xl">
                   Saved <span className="gradient-text">pages</span>:
                </h1>
             </Fade>
             <div className="flex justify-center">
-               <div className="mt-10 mb-5 grid 2xl:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-6">
+               <div className="grid grid-cols-1 gap-6 mt-10 mb-5 2xl:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1">
                   <Fade delay={1000} direction="up" triggerOnce>
                      {pinnedPages.map((pin, index) => (
                         <PinnedService key={index} {...pin} />
@@ -162,12 +162,12 @@ const Home = ({
                </div>
             </div>
             <Fade delay={1250} direction="left" triggerOnce>
-               <h1 className="2xl:text-4xl xl:text-4xl text-3xl font-semibold">
+               <h1 className="text-3xl font-semibold 2xl:text-4xl xl:text-4xl">
                   Today on the <span className="gradient-text">news</span>:
                </h1>
             </Fade>
             <Fade delay={2000} triggerOnce>
-               <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
+               <div className="flex flex-wrap items-center justify-center gap-4 mt-10">
                   {articles
                      ?.sort(
                         (a, b) =>

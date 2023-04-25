@@ -1,40 +1,35 @@
-FROM node:alpine AS deps
+FROM mitchpash/pnpm AS deps
 RUN apk add --no-cache libc6-compat
-WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+WORKDIR /home/node/app
+COPY pnpm-lock.yaml .npmr[c] ./
 
-FROM node:alpine AS builder
-WORKDIR /app
+RUN pnpm fetch
+
+FROM mitchpash/pnpm AS builder
+WORKDIR /home/node/app
+COPY --from=deps /home/node/app/node_modules ./node_modules
 COPY . .
-COPY --from=deps /app/node_modules ./node_modules
-RUN yarn build
 
-FROM node:alpine AS runner
-WORKDIR /app
+RUN pnpm install
+RUN pnpm build
 
-ARG APP_ENV=production
-ARG NODE_ENV=production
-ARG PORT=3000
+FROM mitchpash/pnpm AS runner
+WORKDIR /home/node/app
 
-ENV APP_ENV=${APP_ENV} \
-    NODE_ENV=${NODE_ENV} \
-    PORT=${PORT}
+ENV NODE_ENV production
 
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nextjs -u 1001
+COPY --from=builder /home/node/app/next.config.js ./
+COPY --from=builder /home/node/app/public ./public
+COPY --from=builder /home/node/app/package.json ./package.json
 
-RUN mkdir -p /app/.next/cache/images && chown nextjs:nodejs /app/.next/cache/images
-VOLUME /app/.next/cache/images
+# Automatically leverage output traces to reduce image size 
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+# Some things are not allowed (see https://github.com/vercel/next.js/issues/38119#issuecomment-1172099259)
+COPY --from=builder --chown=node:node /home/node/app/.next/standalone ./
+COPY --from=builder --chown=node:node /home/node/app/.next/static ./.next/static
 
-COPY --from=builder /app/next.config.js ./
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
+EXPOSE 3000
 
-USER nextjs
+ENV PORT 3000
 
-EXPOSE ${PORT}
-
-CMD ["yarn", "start"]
+CMD ["node", "server.js"]

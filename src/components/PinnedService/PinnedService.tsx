@@ -28,7 +28,7 @@ export const PinnedService = ({
    return (
       <a
          href={url}
-         className="mb-2 bg-gray-800 border-2 border-gray-700 rounded-xl p-4 overflow-hidden shadow-xl flex hoverItem duration-200 items-center gap-4 max-w-xl"
+         className="flex items-center max-w-xl gap-4 p-4 mb-2 overflow-hidden duration-200 bg-gray-800 border-2 border-gray-700 shadow-xl rounded-xl hoverItem"
          style={{
             height: "80px",
             borderLeft: `10px solid ${color}`,
@@ -37,17 +37,18 @@ export const PinnedService = ({
          <div className="mt-2">
             <Image
                src={image}
-               width={name === "Plausible" ? "40%" : "50%"}
-               height="50%"
+               width={name === "Plausible" ? 40 : 50}
+               height={50}
                blurDataURL={
                   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
                }
                placeholder="blur"
+               alt={name}
             />
          </div>
          <div className="w-full">
             {authelia && (
-               <div className="float-right mr-5 mt-4">
+               <div className="float-right mt-4 mr-5">
                   <Tooltip
                      content="This is page is protected by Authelia."
                      animation="shift-away"
