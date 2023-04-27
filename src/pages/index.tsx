@@ -103,7 +103,7 @@ const Home = ({
             <Fade direction="left" triggerOnce>
                <h1 className="text-4xl font-semibold 2xl:text-5xl xl:text-5xl">
                   {getHumanizedDate()}{" "}
-                  <span className="gradient-text">Dave!</span>
+                  <span className="gradient-text">David!</span>
                </h1>
             </Fade>
             <Fade delay={750} direction="up" triggerOnce>
