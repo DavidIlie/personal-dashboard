@@ -41,7 +41,7 @@ const Home = ({
    message,
 }: HomeProps): JSX.Element => {
    if (error) {
-      console.log(message);
+      console.error(message);
       return (
          <>
             <NextSeo title="Error" />
