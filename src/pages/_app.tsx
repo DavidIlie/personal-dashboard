@@ -1,11 +1,8 @@
 import { AppProps } from "next/app";
 import { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
 import Loader from "@components/Loader";
 import { DefaultSeo } from "next-seo";
-import { QueryClient, QueryClientProvider } from "react-query";
 import AppLayout from "@components/AppLayout";
-import ReactModal from "react-modal";
 
 import "tailwindcss/tailwind.css";
 import "@styles/global.css";
@@ -13,9 +10,6 @@ import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
 import "react-toastify/dist/ReactToastify.css";
 
-ReactModal.setAppElement("#__next");
-
-const queryClient = new QueryClient();
 export default function PersonalDashboard({
    Component,
    pageProps,
@@ -57,12 +51,9 @@ export default function PersonalDashboard({
             }}
             description="Personal dashboard for my services running in my home network."
          />
-         <QueryClientProvider client={queryClient}>
-            <AppLayout>
-               {loading ? <Loader /> : <Component {...pageProps} />}
-            </AppLayout>
-         </QueryClientProvider>
-         <ToastContainer autoClose={2500} newestOnTop={true} />
+         <AppLayout>
+            {loading ? <Loader /> : <Component {...pageProps} />}
+         </AppLayout>
       </>
    );
 }
