@@ -13,6 +13,8 @@ jobs:
               sha=${GITHUB_SHA::8}
               ts=$(date +%s)
               echo "::set-output name=BUILD_ID::${branch}-${sha}-${ts}"
+         - name: "Build:checkout"
+           uses: actions/checkout@v2
          - name: Set up QEMU
            uses: docker/setup-qemu-action@v1
          - name: Set up Docker Buildx
