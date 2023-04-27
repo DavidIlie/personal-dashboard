@@ -5,13 +5,11 @@
    "scripts": {
       "dev": "next dev",
       "build": "next build",
-      "start": "next start",
-      "format": "prettier --ignore-path --tab-width 4 .gitignore \"src/**/*.+(js|tsx)\" --write"
+      "start": "next start"
    },
    "dependencies": {
       "@emotion/react": "^11.10.6",
       "@tippyjs/react": "^4.2.6",
-      "@types/dateformat": "^5.0.0",
       "date-fns": "^2.29.3",
       "dateformat": "^5.0.3",
       "moment": "^2.29.4",
@@ -20,16 +18,13 @@
       "react": "17.0.2",
       "react-awesome-reveal": "^3.8.1",
       "react-dom": "17.0.2",
-      "react-icons": "^4.8.0",
-      "react-modal": "^3.16.1",
-      "react-query": "^3.39.3",
-      "react-toastify": "^9.1.2"
+      "react-icons": "^4.8.0"
    },
    "devDependencies": {
       "@types/node": "18.16.0",
       "@types/react": "^18.0.38",
       "@types/react-dom": "^18.0.11",
-      "@types/react-modal": "^3.16.0",
+      "@types/dateformat": "^5.0.0",
       "autoprefixer": "^10.4.14",
       "postcss": "^8.4.23",
       "tailwindcss": "^3.3.1",

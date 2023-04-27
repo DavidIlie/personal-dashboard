@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useQuery } from "react-query";
+import { useEffect, useState } from "react";
 import dateFormat from "dateformat";
 import { NextSeo } from "next-seo";
 import { Fade } from "react-awesome-reveal";
@@ -81,24 +80,16 @@ const Home = ({
       country: "pending",
    });
 
-   const twentyFourHoursInMs = 1000 * 60 * 60 * 24;
-
-   const { isLoading } = useQuery(
-      `getLocation`,
-      async () =>
+   useEffect(() => {
+      const runQuery = async () =>
          await weatherQuery(
             setWeather,
             setLocation,
             weather_api_key,
             ip_locator_key
-         ),
-      {
-         refetchOnWindowFocus: false,
-         refetchOnReconnect: false,
-         retry: false,
-         staleTime: twentyFourHoursInMs,
-      }
-   );
+         );
+      runQuery();
+   }, []);
 
    return (
       <>
