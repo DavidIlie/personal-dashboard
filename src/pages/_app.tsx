@@ -8,7 +8,6 @@ import "tailwindcss/tailwind.css";
 import "@styles/global.css";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
-import "react-toastify/dist/ReactToastify.css";
 
 export default function PersonalDashboard({
    Component,
