@@ -3,9 +3,16 @@ on: push
 jobs:
    execute:
       env:
-         IMAGE: ghcr.io/davidilie/personal-dashboard:1.0.0
+         IMAGE: ghcr.io/davidilie/personal-dashboard
       runs-on: ubuntu-latest
       steps:
+         - name: Generate build ID
+           id: prep
+           run: |
+              branch=${GITHUB_REF##*/}
+              sha=${GITHUB_SHA::8}
+              ts=$(date +%s)
+              echo "::set-output name=BUILD_ID::${branch}-${sha}-${ts}"
          - name: "Build:checkout"
            uses: actions/checkout@v2
          - name: Set up QEMU
@@ -25,4 +32,4 @@ jobs:
               context: .
               file: ./Dockerfile
               tags: |
-                 ${{ env.IMAGE }}
+                 ${{ env.IMAGE }}:${{ steps.prep.outputs.BUILD_ID }}
