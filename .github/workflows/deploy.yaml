@@ -3,7 +3,7 @@ on: push
 jobs:
    execute:
       env:
-         IMAGE: ghcr.io/DavidIlie/personal-dashboard
+         IMAGE: ghcr.io/davidilie/personal-dashboard
       runs-on: ubuntu-latest
       steps:
          - name: Generate build ID
