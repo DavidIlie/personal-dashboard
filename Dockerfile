@@ -13,7 +13,7 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN SKIP_ENV_VALIDATION=true yarn build
+RUN yarn build
 
 FROM base AS runner
 WORKDIR /app

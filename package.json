@@ -9,7 +9,6 @@
    },
    "dependencies": {
       "@emotion/react": "^11.10.6",
-      "@t3-oss/env-nextjs": "^0.4.0",
       "@tippyjs/react": "^4.2.6",
       "date-fns": "^2.29.3",
       "dateformat": "^5.0.3",
