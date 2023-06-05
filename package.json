@@ -19,6 +19,7 @@
       "react-awesome-reveal": "^3.8.1",
       "react-dom": "18.2.0",
       "react-icons": "^4.8.0",
+      "tippy.js": "^6.3.7",
       "zod": "^3.21.4"
    },
    "devDependencies": {

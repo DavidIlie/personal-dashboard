@@ -23,7 +23,7 @@ export const Article = ({
 }: ArticleProps): JSX.Element => {
    return (
       <a
-         className="max-w-md px-4 duration-200 xl:max-w-sm hoverItem"
+         className="max-w-md mx-4 duration-200 xl:max-w-sm hoverItem"
          href={url}
          target="_blank"
       >

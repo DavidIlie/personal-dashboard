@@ -15,4 +15,5 @@ export const env = createEnv({
       IP_LOCATOR_KEY: process.env.IP_LOCATOR_KEY,
       NAME: process.env.NAME,
    },
+   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
 });
