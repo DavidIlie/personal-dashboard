@@ -1,25 +1,39 @@
-import { useState } from "react";
-import { FaLock } from "react-icons/fa";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
-import Tooltip from "@ui/Tooltip";
+import { PinnedPageProps } from "~/data/pinnedPages";
+import Tooltip from "./Tooltip";
 
-interface PinnedServiceProps {
-   name: string;
-   type?: string;
-   url: string;
-   image: string;
-   authelia: boolean;
-}
+import { FaLock } from "react-icons/fa";
 
 export const PinnedService = ({
    name,
    type,
    url,
    image,
-   authelia,
-}: PinnedServiceProps): JSX.Element => {
+   internal,
+}: PinnedPageProps): JSX.Element => {
    const [color, setColor] = useState("#212622");
+
+   useEffect(() => {
+      const doPing = async () => {
+         if (internal) return;
+         try {
+            const r = await fetch(`/check?url=${url}`);
+            const response = (await r.json()) as {
+               status: number;
+               ok: boolean;
+            };
+            if (response.ok || response.status === 405)
+               return setColor("#28a745");
+            setColor("#dc3545");
+         } catch (error) {
+            console.log(url);
+            setColor("#212622");
+         }
+      };
+      doPing();
+   }, []);
 
    // offline: #dc3545
    // online: #28a745
@@ -47,10 +61,10 @@ export const PinnedService = ({
             />
          </div>
          <div className="w-full">
-            {authelia && (
+            {internal && (
                <div className="float-right mt-4 mr-5">
                   <Tooltip
-                     content="This is page is protected by Authelia."
+                     content="This service is internal."
                      animation="shift-away"
                   >
                      <div>

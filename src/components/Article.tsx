@@ -1,8 +1,8 @@
 import { formatDistance } from "date-fns";
 import Image from "next/image";
-import { shimmer } from "@lib/shimmer";
+import { shimmer } from "~/lib/shimmer";
 
-interface ArticleProps {
+export interface ArticleProps {
    description: string;
    publishedAt: Date;
    title: string;
@@ -30,7 +30,7 @@ export const Article = ({
          <div className="mb-6 tracking-wide bg-gray-800 border-2 border-gray-700 rounded-lg shadow-2xl">
             <div className="md:flex-shrink-0">
                <Image
-                  src={`/api/imageproxy?url=${urlToImage}`}
+                  src={`/proxy?url=${urlToImage}`}
                   width={500}
                   height={300}
                   className="object-cover w-full h-64 rounded-lg rounded-b-none"
