@@ -1,59 +1,60 @@
 export default async function weatherQuery(
-   setWeather: any,
-   setLocation: any,
-   weather_api_key: string,
-   ip_locator_key: string
+   setWeather: (s: any) => void,
+   setLocation: (s: any) => void
 ) {
-   var lat: number, lon: number;
-   var locationPromise = new Promise(function (resolve, reject) {
-      navigator.geolocation.getCurrentPosition(
-         function (pos) {
-            lat = pos.coords.latitude;
-            lon = pos.coords.longitude;
-            resolve({ lat, lon, undefined });
-         },
-         () => {
-            resolve({ lat: 0, lon: 0, error: "error" });
-         }
+   try {
+      const { latitude, longitude } = await getCurrentLocation();
+      const weatherData = await getWeatherDataByCoordinates(
+         latitude,
+         longitude
       );
-   });
-
-   //@ts-ignore
-   locationPromise.then(async ({ lat, lon, error }) => {
-      if (!error) {
-         const locationReq = await fetch(
-            `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${weather_api_key}`
-         );
-         const response = await locationReq.json();
-
-         if (response[0] !== undefined) {
-            const weatherRequest = await fetch(
-               `https://api.openweathermap.org/data/2.5/weather?q=${response[0].name}&appid=${weather_api_key}`
-            );
-            const { weather, main } = await weatherRequest.json();
-            setWeather({ weather, main });
-            setLocation({
-               city: response[0].name,
-               country: response[0].country,
-            });
-         }
-      } else {
-         const ipReq = await fetch(
-            `https://api.ipregistry.co/?key=${ip_locator_key}`
-         );
-         const response = await ipReq.json();
-
-         if (response.location !== undefined) {
-            const weatherRequest = await fetch(
-               `https://api.openweathermap.org/data/2.5/weather?q=${response.location.city}&appid=${weather_api_key}`
-            );
-            const { weather, main } = await weatherRequest.json();
-            setWeather({ weather, main });
-            setLocation({
-               city: response.location.city,
-               country: response.location.region.name,
-            });
-         }
-      }
-   });
+      setWeather({ weather: weatherData.weather, main: weatherData.main });
+      setLocation({ city: weatherData.name, country: weatherData.country });
+   } catch (error) {
+      console.error("Error fetching weather data:", error);
+      const locationData = await getLocationByIP();
+      const weatherData = await getWeatherDataByCity(locationData.city);
+      setWeather({ weather: weatherData.weather, main: weatherData.main });
+      setLocation({ city: weatherData.city, country: weatherData.country });
+   }
 }
+
+const getCurrentLocation = async () => {
+   return new Promise<{ latitude: number; longitude: number }>(
+      (resolve, reject) => {
+         navigator.geolocation.getCurrentPosition(
+            (position) => resolve(position.coords),
+            (error) => reject(error)
+         );
+      }
+   );
+};
+
+const getWeatherDataByCoordinates = async (
+   latitude: number,
+   longitude: number
+) => {
+   const response = await fetch(
+      `/api/getWeather?lat=${latitude}&lon=${longitude}`
+   );
+   if (!response.ok) {
+      throw new Error("Failed to fetch weather data");
+   }
+   return response.json();
+};
+
+const getLocationByIP = async () => {
+   const response = await fetch(`http://ip-api.com/json/?fields=61439`);
+   if (!response.ok) {
+      throw new Error("Failed to fetch location data");
+   }
+   return response.json();
+};
+
+const getWeatherDataByCity = async (city: string) => {
+   const response = await fetch(`/api/getWeatherByCity?city=${city}`);
+   if (!response.ok) {
+      throw new Error("Failed to fetch weather data");
+   }
+   return response.json();
+};

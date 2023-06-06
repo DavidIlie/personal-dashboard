@@ -10,11 +10,7 @@ import { weatherProps, locationProps } from "~/types/weather";
 import capitalizeTheFirstLetterOfEachWord from "~/lib/capitalizeTheFirstLetterOfEachWord";
 import Tooltip from "~/components/Tooltip";
 
-const Header: React.FC<{
-   weather_api_key: string;
-   ip_locator_key: string;
-   name: string | null;
-}> = ({ weather_api_key, ip_locator_key, name = "David" }) => {
+const Header: React.FC<{}> = () => {
    const now = new Date();
 
    const [weather, setWeather] = useState<weatherProps>({
@@ -35,13 +31,7 @@ const Header: React.FC<{
    });
 
    useEffect(() => {
-      const runQuery = async () =>
-         await weatherQuery(
-            setWeather,
-            setLocation,
-            weather_api_key,
-            ip_locator_key
-         );
+      const runQuery = async () => await weatherQuery(setWeather, setLocation);
       runQuery();
    }, []);
 
@@ -55,7 +45,7 @@ const Header: React.FC<{
          <Fade direction="left" triggerOnce>
             <h1 className="text-4xl font-semibold 2xl:text-5xl xl:text-5xl">
                {getHumanizedDate()}{" "}
-               <span className="gradient-text">{name}!</span>
+               <span className="gradient-text">David!</span>
             </h1>
          </Fade>
          <Fade delay={750} direction="up" triggerOnce>
@@ -63,20 +53,20 @@ const Header: React.FC<{
                <span className="gradient-text">
                   {capitalizeTheFirstLetterOfEachWord(
                      weather.weather[0].description
-                  )}
+                  ) || "Pending"}
                </span>
                ,{" "}
                <span className="gradient-text">
-                  {Math.trunc(weather.main.temp - 273.15)}
+                  {Math.trunc(weather.main.temp - 273.15) || 0}
                </span>{" "}
                degrees, but feels like{" "}
                <span className="gradient-text">
-                  {Math.trunc(weather.main.feels_like - 273.15)}{" "}
+                  {Math.trunc(weather.main.feels_like - 273.15) || 0}{" "}
                </span>
                degrees in{" "}
                <Tooltip content={location.country} animation="shift-away">
                   <span className="cursor-pointer gradient-text">
-                     {location.city}
+                     {location.city || "Pending"}
                   </span>
                </Tooltip>
             </p>

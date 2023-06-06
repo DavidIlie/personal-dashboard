@@ -4,6 +4,9 @@ dependencies:
   '@emotion/react':
     specifier: ^11.10.6
     version: 11.10.6(@types/react@18.2.0)(react@18.2.0)
+  '@t3-oss/env-nextjs':
+    specifier: ^0.4.0
+    version: 0.4.0(typescript@5.0.4)(zod@3.21.4)
   '@tippyjs/react':
     specifier: ^4.2.6
     version: 4.2.6(react-dom@18.2.0)(react@18.2.0)
@@ -357,6 +360,27 @@ packages:
     resolution: {integrity: sha512-sJ902EfIzn1Fa+qYmjdQqh8tPsoxyBz+8yBKC2HKUxyezKJFwPGOn7pv4WY6QuQW//ySQi5lJjA/ZT9sNWWNTg==}
     dependencies:
       tslib: 2.5.0
+    dev: false
+
+  /@t3-oss/env-core@0.4.0(typescript@5.0.4)(zod@3.21.4):
+    resolution: {integrity: sha512-6JlMp0Vru15q/axHzBKsQQjiyGS6k+EsZBY1iErGVmOGzNSoVluBahnYFP7tEkwZ7KoRgSq4NRIc1Ez7SVYuxQ==}
+    peerDependencies:
+      typescript: '>=4.7.2'
+      zod: ^3.0.0
+    dependencies:
+      typescript: 5.0.4
+      zod: 3.21.4
+    dev: false
+
+  /@t3-oss/env-nextjs@0.4.0(typescript@5.0.4)(zod@3.21.4):
+    resolution: {integrity: sha512-K1u2i+S/uEhjfg++FqWlOzS6x237EARRbWGowH2MkDkFu2q7ZJSiJBJT8e47L7NHWH5IyZrTCM6BdOxyWEnQuQ==}
+    peerDependencies:
+      typescript: '>=4.7.2'
+      zod: ^3.0.0
+    dependencies:
+      '@t3-oss/env-core': 0.4.0(typescript@5.0.4)(zod@3.21.4)
+      typescript: 5.0.4
+      zod: 3.21.4
     dev: false
 
   /@tippyjs/react@4.2.6(react-dom@18.2.0)(react@18.2.0):
@@ -1261,7 +1285,6 @@ packages:
     resolution: {integrity: sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==}
     engines: {node: '>=12.20'}
     hasBin: true
-    dev: true
 
   /update-browserslist-db@1.0.11(browserslist@4.21.5):
     resolution: {integrity: sha512-dCwEFf0/oT85M1fHBg4F0jtLwJrutGoHSQXCh7u4o2t1drG+c0a9Flnqww6XUKSfQMPpJBRjU8d4RXB09qtvaA==}

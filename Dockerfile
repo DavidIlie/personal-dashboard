@@ -1,40 +1,31 @@
-FROM node:18-alpine AS base
-
-FROM base AS deps
+FROM mitchpash/pnpm AS deps
 RUN apk add --no-cache libc6-compat
-WORKDIR /app
+WORKDIR /home/node/app
+COPY pnpm-lock.yaml .npmr[c] ./
 
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
-RUN yarn global add pnpm && pnpm i --frozen-lockfile
+RUN pnpm fetch
 
-FROM deps AS builder
-COPY --from=deps /app/node_modules ./node_modules
+FROM mitchpash/pnpm AS builder
+WORKDIR /home/node/app
 COPY . .
 
-ENV NEXT_TELEMETRY_DISABLED 1
+RUN pnpm install
+RUN SKIP_ENV_VALIDATION=true pnpm build
 
-RUN yarn build
-
-FROM base AS runner
-WORKDIR /app
-
-RUN apk add --no-cache cairo \
-	jpeg \
-	pango \
-	giflib
+FROM mitchpash/pnpm AS runner
+WORKDIR /home/node/app
 
 ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+COPY --from=builder /home/node/app/next.config.mjs ./
+COPY --from=builder /home/node/app/public ./public
+COPY --from=builder /home/node/app/package.json ./package.json
 
-COPY --from=builder /app/public ./public
-
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
+# Automatically leverage output traces to reduce image size 
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+# Some things are not allowed (see https://github.com/vercel/next.js/issues/38119#issuecomment-1172099259)
+COPY --from=builder --chown=node:node /home/node/app/.next/standalone ./
+COPY --from=builder --chown=node:node /home/node/app/.next/static ./.next/static
 
 EXPOSE 3000
 

@@ -30,7 +30,7 @@ export const pinnedPages: PinnedPageProps[] = [
    },
    {
       name: "MinIO",
-      type: "Object Storage",
+      type: "Storage",
       url: "https://minio.davidapps.dev",
       image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/bfea165c-9968-4222-908a-25cbdbb6a327",
       internal: true,

@@ -62,7 +62,7 @@ export const PinnedService = ({
          </div>
          <div className="w-full">
             {internal && (
-               <div className="float-right mt-4 mr-5">
+               <div className="float-right mt-4 mr-3">
                   <Tooltip
                      content="This service is internal."
                      animation="shift-away"
