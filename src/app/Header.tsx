@@ -16,7 +16,7 @@ const Header: React.FC<{}> = () => {
    const [weather, setWeather] = useState<weatherProps>({
       weather: [
          {
-            description: "pending",
+            description: "Pending",
          },
       ],
       main: {
@@ -26,8 +26,8 @@ const Header: React.FC<{}> = () => {
    });
 
    const [location, setLocation] = useState<locationProps>({
-      city: "pending",
-      country: "pending",
+      city: "Pending",
+      country: "Pending",
    });
 
    useEffect(() => {
@@ -53,7 +53,7 @@ const Header: React.FC<{}> = () => {
                <span className="gradient-text">
                   {capitalizeTheFirstLetterOfEachWord(
                      weather.weather[0].description
-                  ) || "Pending"}
+                  )}
                </span>
                ,{" "}
                <span className="gradient-text">
@@ -66,7 +66,7 @@ const Header: React.FC<{}> = () => {
                degrees in{" "}
                <Tooltip content={location.country} animation="shift-away">
                   <span className="cursor-pointer gradient-text">
-                     {location.city || "Pending"}
+                     {location.city}
                   </span>
                </Tooltip>
             </p>
