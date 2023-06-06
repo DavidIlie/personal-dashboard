@@ -44,7 +44,7 @@ const getWeatherDataByCoordinates = async (
 };
 
 const getLocationByIP = async () => {
-   const response = await fetch(`http://ip-api.com/json/?fields=61439`);
+   const response = await fetch(`https://ip-api.io/json`);
    if (!response.ok) {
       throw new Error("Failed to fetch location data");
    }
