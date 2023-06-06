@@ -48,7 +48,12 @@ const Header: React.FC<{}> = () => {
                <span className="gradient-text">David!</span>
             </h1>
          </Fade>
-         <Fade delay={750} direction="up" triggerOnce>
+         <Fade
+            delay={750}
+            className={`${location.city === "Pending" && "invisible"}`}
+            direction="up"
+            triggerOnce
+         >
             <p className="mt-2 ml-1 text-xl font-semibold">
                <span className="gradient-text">
                   {capitalizeTheFirstLetterOfEachWord(
@@ -57,11 +62,11 @@ const Header: React.FC<{}> = () => {
                </span>
                ,{" "}
                <span className="gradient-text">
-                  {Math.trunc(weather.main.temp - 273.15) || 0}
+                  {Math.trunc(weather.main.temp - 273.15)}
                </span>{" "}
                degrees, but feels like{" "}
                <span className="gradient-text">
-                  {Math.trunc(weather.main.feels_like - 273.15) || 0}{" "}
+                  {Math.trunc(weather.main.feels_like - 273.15)}{" "}
                </span>
                degrees in{" "}
                <Tooltip content={location.country} animation="shift-away">
