@@ -1,6 +1,5 @@
 module.exports = {
-   purge: ["./src/**/*.{js,ts,jsx,tsx}"],
-   darkMode: false,
+   content: ["./src/**/*.{js,ts,jsx,tsx}"],
    theme: {
       extend: {
          screens: {
