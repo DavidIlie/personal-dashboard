@@ -42,7 +42,7 @@ export const PinnedService = ({
    return (
       <a
          href={url}
-         className="flex items-center max-w-xl gap-4 p-4 mb-2 overflow-hidden duration-200 bg-gray-800 border-2 border-gray-700 shadow-xl cusor-pointer rounded-xl hoverItem"
+         className="flex items-center max-w-xl gap-4 p-4 mb-2 overflow-hidden duration-200 bg-gray-800 border-2 border-gray-700 shadow-xl cursor-pointer rounded-xl hoverItem"
          style={{
             height: "80px",
             borderLeft: `10px solid ${color}`,
