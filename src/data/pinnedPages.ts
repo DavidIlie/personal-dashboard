@@ -22,13 +22,6 @@ export const pinnedPages: PinnedPageProps[] = [
       internal: true,
    },
    {
-      name: "TrueNAS",
-      type: "Spain",
-      url: "https://truenas.davidapps.es",
-      image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/4f04ba35-0ee0-4847-89b2-45f91501645b",
-      internal: true,
-   },
-   {
       name: "MinIO",
       type: "Storage",
       url: "https://minio.davidapps.dev",
@@ -57,6 +50,12 @@ export const pinnedPages: PinnedPageProps[] = [
       name: "HASS",
       type: "Spain",
       url: "https://hass.davidapps.es",
+      image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/139a2d24-0e1d-412d-93c4-56ef08c2aaf0",
+   },
+   {
+      name: "HASS",
+      type: "UK",
+      url: "https://hassuk.davidapps.dev",
       image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/139a2d24-0e1d-412d-93c4-56ef08c2aaf0",
    },
    {
