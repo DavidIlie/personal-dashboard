@@ -29,17 +29,13 @@ export const pinnedPages: PinnedPageProps[] = [
       internal: true,
    },
    {
-      name: "Immich",
-      type: "Photos",
-      url: "https://photos.davidapps.dev",
-      image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/5c7c07f0-e276-4341-895c-91854e07bda1",
+      name: "Rook",
+      type: "Ceph Cluster",
+      url: "https://rook.davidapps.dev",
+      image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/deacf7ea-1a13-40b7-897f-bdfeb70f0fab",
+      internal: true,
    },
-   {
-      name: "Excalidraw",
-      type: "Drawing",
-      url: "https://draw.davidapps.dev",
-      image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/d9d4bd22-fc83-4662-baee-114ed200bb10",
-   },
+
    {
       name: "HASS",
       type: "Romania",
@@ -61,14 +57,15 @@ export const pinnedPages: PinnedPageProps[] = [
    {
       name: "Pterodactyl",
       type: "Games",
-      url: "https://pterodactyl.davidapps.dev",
+      url: "https://panel.davidapps.dev",
       image: "https://user-images.githubusercontent.com/47594764/124396725-8cb54200-dd0b-11eb-95ae-1b991835d330.png",
    },
    {
-      name: "Plausible",
-      type: "Web Analytics",
-      url: "https://plausible.davidapps.dev",
-      image: "https://user-images.githubusercontent.com/47594764/126315061-09fce13b-275e-42d8-865a-a5f2c519e41f.png",
+      name: "Prowlarr",
+      type: "Indexer",
+      url: "https://prowlarr.davidapps.dev",
+      image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/72f85098-c89b-4526-b1a1-44810209c79a",
+      internal: true,
    },
    {
       name: "Radarr",
@@ -85,10 +82,24 @@ export const pinnedPages: PinnedPageProps[] = [
       internal: true,
    },
    {
+      name: "Overseer",
+      type: "Requests",
+      url: "https://requests.davidapps.dev",
+      image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/dfb74479-2e10-4936-9066-89bee6d11c02",
+      internal: false,
+   },
+   {
       name: "qBittorent",
       type: "Pirate",
       url: "https://qb.davidapps.dev",
       image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/fdebfd05-f67b-4ce0-8e73-46bbdbcd53ce",
+      internal: true,
+   },
+   {
+      name: "SABnzbd",
+      type: "Usenet",
+      url: "https://sab.davidapps.dev",
+      image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/f0d5df20-20dc-48c4-b16e-f9fa45076969",
       internal: true,
    },
    {
@@ -99,17 +110,9 @@ export const pinnedPages: PinnedPageProps[] = [
       internal: true,
    },
    {
-      name: "Rook",
-      type: "Ceph Cluster",
-      url: "https://rook.davidapps.dev",
-      image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/deacf7ea-1a13-40b7-897f-bdfeb70f0fab",
-      internal: true,
-   },
-   {
-      name: "GitOps",
-      type: "Flux",
-      url: "https://gitops.davidapps.dev",
-      image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/5d129feb-d764-4c4d-8f52-d386b7923da6",
-      internal: true,
+      name: "Excalidraw",
+      type: "Drawing",
+      url: "https://draw.davidapps.dev",
+      image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/d9d4bd22-fc83-4662-baee-114ed200bb10",
    },
 ];
