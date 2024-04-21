@@ -9,14 +9,12 @@ export interface PinnedPageProps {
 export const pinnedPages: PinnedPageProps[] = [
    {
       name: "Nucleus",
-      type: "Hypervisor",
       url: "https://nucleus.davidapps.dev",
       image: "https://user-images.githubusercontent.com/47594764/124385080-8c4d8480-dcd4-11eb-9dbb-090f17f5b7ec.png",
       internal: true,
    },
    {
       name: "TrueNAS",
-      type: "Romania",
       url: "https://truenas.davidapps.dev",
       image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/4f04ba35-0ee0-4847-89b2-45f91501645b",
       internal: true,
@@ -30,7 +28,7 @@ export const pinnedPages: PinnedPageProps[] = [
    },
    {
       name: "Rook",
-      type: "Ceph Cluster",
+      type: "Ceph",
       url: "https://rook.davidapps.dev",
       image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/deacf7ea-1a13-40b7-897f-bdfeb70f0fab",
       internal: true,
@@ -76,7 +74,7 @@ export const pinnedPages: PinnedPageProps[] = [
    },
    {
       name: "Sonarr",
-      type: "TV Shows",
+      type: "TV",
       url: "https://sonarr.davidapps.dev",
       image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/e85d0016-3547-4e43-a46d-063c7f67be4c",
       internal: true,
@@ -104,7 +102,6 @@ export const pinnedPages: PinnedPageProps[] = [
    },
    {
       name: "Tautulli",
-      type: "Plex Monitor",
       url: "https://tautulli.davidapps.dev",
       image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/57c7abb8-42bb-4c5a-a648-23f633502ae6",
       internal: true,
