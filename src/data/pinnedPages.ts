@@ -54,7 +54,6 @@ export const pinnedPages: PinnedPageProps[] = [
    },
    {
       name: "Pterodactyl",
-      type: "Games",
       url: "https://panel.davidapps.dev",
       image: "https://user-images.githubusercontent.com/47594764/124396725-8cb54200-dd0b-11eb-95ae-1b991835d330.png",
    },
@@ -108,7 +107,6 @@ export const pinnedPages: PinnedPageProps[] = [
    },
    {
       name: "Excalidraw",
-      type: "Drawing",
       url: "https://draw.davidapps.dev",
       image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/d9d4bd22-fc83-4662-baee-114ed200bb10",
    },
