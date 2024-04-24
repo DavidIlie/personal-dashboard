@@ -49,7 +49,7 @@ export const pinnedPages: PinnedPageProps[] = [
    {
       name: "HASS",
       type: "UK",
-      url: "https://hassuk.davidapps.dev",
+      url: "https://hass.davidinfra.co.uk",
       image: "https://github.com/DavidIlie/personal-dashboard/assets/47594764/139a2d24-0e1d-412d-93c4-56ef08c2aaf0",
    },
    {
