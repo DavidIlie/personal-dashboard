@@ -4,7 +4,7 @@ jobs:
    execute:
       env:
          IMAGE: ghcr.io/davidilie/personal-dashboard
-      runs-on: davidapps-linux-x64
+      runs-on: ubuntu-24.04
       steps:
          - name: Generate build ID
            id: prep
